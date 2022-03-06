@@ -1,5 +1,5 @@
 <template>
-  <div>Voy a la izquierda</div>
+  <div>Paperroll</div>
 </template>
 
 <script lang="ts">
@@ -10,5 +10,5 @@ export default {
 
 <style lang="sass" scoped>
 div 
-    color: green
+  width: 30%
 </style>

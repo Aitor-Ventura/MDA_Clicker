@@ -1,5 +1,5 @@
 <template>
-  <div>Voy a la derecha</div>
+  <div>Upgrades</div>
 </template>
 
 <script lang="ts">
@@ -10,5 +10,6 @@ export default {
 
 <style lang="sass" scoped>
 div 
-    color: blue
+    background: aqua
+    width: 20%
 </style>

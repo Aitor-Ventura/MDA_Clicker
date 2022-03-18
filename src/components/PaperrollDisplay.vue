@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1> {{ getPointsPerClick() }} pieces of paper rolls</h1>
+    <h1> {{ totalPoints }} {{}} pieces of paper rolls</h1>
     <img @click="addPointsPerClick()" src="../../img/paperroll.png" width="275" height="275">
   </div>
 </template>
@@ -11,16 +11,19 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      pointsPerClick: 0,
-      pointsPerSecond: 0,
+      totalPoints: 0,
+      pointsPerClick: 1,
+      pointsPerSecond: 1
     };
+  },
+  mounted: function () {
+    this.$nextTick(function() {
+      setInterval(() => {this.totalPoints += this.pointsPerSecond}, 1000)
+    })
   },
   methods: {
     addPointsPerClick() {
-      this.pointsPerClick++
-    },
-    getPointsPerClick() {
-      return this.pointsPerClick
+      this.totalPoints += this.pointsPerClick
     }
   }
 })
@@ -35,6 +38,5 @@ div
   justify-content: center
   flex-wrap: wrap
   align-content: center
-
 
 </style>

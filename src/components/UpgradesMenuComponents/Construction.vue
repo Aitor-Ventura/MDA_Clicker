@@ -1,16 +1,9 @@
 <template>
     <div class="constructionContainer">
-        <div>
-            <h1>{{ name }}</h1>
-        </div>
-
-        <div>
-            <p>{{ price }}</p>
-        </div>
-
-        <div>
-           <p>{{ iGot }}</p>
-        </div>
+        <img :src=image width="110" height="110">
+        <p>{{ name }}</p>
+        <p>{{ price }}</p>
+        <p>{{ iGot }}</p>
     </div>
 </template>
 
@@ -19,7 +12,8 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     props: {
-        image: Image,
+        id: Number,
+        image: String,
         name: String,
         price: Number,
         iGot: Number // How many of X construction do I have
@@ -31,8 +25,12 @@ export default defineComponent({
 .constructionContainer
     width: auto
     display: flex
+    align-items: center
     justify-content: space-around
     border: 5px solid black
     margin: 1em 1em
+ 
+.constructionContainer img
+    padding: .5em
 
 </style>

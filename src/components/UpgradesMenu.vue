@@ -1,10 +1,12 @@
 <template>
   <div>Upgrades
-
-    <Construction class="construction" :name="names[0]" :price="prices[0]" :iGot="n[0]"></Construction>
-    <Construction :name="names[1]" :price="prices[1]" :iGot="n[1]"></Construction>
-    <Construction :name="names[2]" :price="prices[2]" :iGot="n[2]"></Construction>
-    <Construction :name="names[3]" :price="prices[3]" :iGot="n[3]"></Construction>
+    <Construction v-for="item in items" :key="item.id"
+      :id=item.id
+      :image=item.srcImage  
+      :name=item.name 
+      :price=item.price 
+      :iGot=item.iGot>
+    </Construction>
   </div>
 </template>
 
@@ -18,9 +20,40 @@ export default defineComponent({
   },
   data() {
     return {
-      names: ["Lumberjack", "Shop", "Factor", "Rocket"],
+      items: [
+        {
+          id: 1,
+          srcImage: "../../img/lumberjack1.png",
+          name: "Lumberjack",
+          price: 10,
+          iGot: 0
+        },
+        {
+          id: 2,
+          srcImage: "../../img/shop.png",
+          name: "Shop",
+          price: 100,
+          iGot: 0
+        },
+        {
+          id: 3,
+          srcImage: "../../img/factory.png",
+          name: "Factory",
+          price: 1000,
+          iGot: 0
+        },
+        {
+          id: 4,
+          srcImage: "../../img/rocket.png",
+          name: "Rocket",
+          price: 15000,
+          iGot: 0
+        }
+      ]
+      /*srcImages: ["../../img/lumberjack1.png", "../../img/shop.png", "../../img/factory.png", "../../img/rocket.png"],
+      names: ["Lumberjack", "Shop", "Factory", "Rocket"],
       prices: [10, 100, 1000, 15000],
-      n: [0, 0, 0, 0],
+      n: [0, 0, 0, 0],*/
     }
   }
 })

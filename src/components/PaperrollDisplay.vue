@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1> {{ totalPoints }} {{}} pieces of paper rolls</h1>
+    <h2> {{ pointsPerSecond }} pieces/s</h2>
+  </div>
+  <div>
     <img @click="addPointsPerClick()" src="../../img/paperroll.png" width="275" height="275">
   </div>
 </template>

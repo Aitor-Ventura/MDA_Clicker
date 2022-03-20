@@ -4,6 +4,7 @@
     <h2>per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</h2>
     <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275" />
   </div>
+  <div class="wave"></div>
 </template>
 
 <script setup lang="ts">
@@ -20,15 +21,12 @@ main.addPointsPerSecond();
   width: 30%
   height: 100%
 
-
 .elements
   display: flex
   flex-direction: column
   flex-wrap: wrap
   align-content: center
   width: 100%
-
-
 
 section
   width: 30%
@@ -44,7 +42,6 @@ section
   width: 30%
   height: 120vh
   background: url("../assets/svg/layerBlancoAGris2 inverted.svg")
-
 
 .wave
   animation: animate 15s linear infinite

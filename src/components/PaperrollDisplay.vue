@@ -1,17 +1,14 @@
 <template>
   <div class="main background-gris select-none">
-    <div class="elements">
-      <div>{{ main.totalPoints }} papers</div>
-      <div>per second: {{ main.pointsPerSecond }}</div>
-      <img class="paperroll" @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275" />
-    </div>
-
-    <div class="wave"></div>
+    <h1>{{ abbreviateNumber(+main.totalPoints.toFixed(2), 2) }} papers</h1>
+    <h2>per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</h2>
+    <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useMainStore } from "../stores/mainStore";
+import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;

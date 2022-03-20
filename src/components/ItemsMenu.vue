@@ -1,5 +1,5 @@
 <template>
-    <div>Options</div> 
+    <div class="bg-red-400">Options</div> 
 </template>
 
 <script lang="ts">
@@ -11,5 +11,4 @@ export default {
 <style lang="sass" scoped>
 div 
     width: 50%
-    background: yellow
 </style>

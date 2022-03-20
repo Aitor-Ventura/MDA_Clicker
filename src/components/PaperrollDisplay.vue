@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main bg-red-500">
     <h1> {{ main.totalPoints }} papers </h1>
     <h2> per second: {{ main.pointsPerSecond }}</h2>
     <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275">
@@ -25,6 +25,5 @@ main.addPointsPerSecond();
 
 .p1 
   padding:1 em  
-
 
 </style>

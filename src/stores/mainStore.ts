@@ -19,6 +19,6 @@ export const useMainStore = defineStore("main", {
         },
         addPointsPerSecond() {
             setInterval(() => {this.totalPoints += this.pointsPerSecond}, 1000)
-        }
+        },
     }
 })

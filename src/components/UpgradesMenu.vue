@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="constructionContainer" v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
+    <div @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" class="constructionContainer" v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
       <img :src=item.srcImage width="110" height="110">
       <p>{{ item.name }}</p>
       <p>{{ item.price }}</p>
@@ -13,6 +13,20 @@
 import { useMainStore } from '../stores/mainStore'
 
 const main = useMainStore();
+
+function buyConstruction(id: string, price: number, pointsPerSecond: number) {
+  main.$patch((state) => {
+    main.totalPoints -= price
+    main.pointsPerSecond += pointsPerSecond
+
+    for (let i = 0; i < main.constructions.length; i++) {
+      if (main.constructions[i].id == id) {
+        main.constructions[i].purchased += 1
+      }
+      
+    }
+  })
+}
 
 </script>
 
@@ -31,7 +45,4 @@ div
  
 .constructionContainer img
     padding: .5em
-
-
-
 </style>

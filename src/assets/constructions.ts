@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 
-const producers = [
+const constructions = [
     {
         id: uuidv4(),
         name: 'Lumberjack',
@@ -35,4 +35,4 @@ const producers = [
     },
 ]
 
-export default producers
+export default constructions

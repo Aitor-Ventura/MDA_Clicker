@@ -23,6 +23,7 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number) {
       for (let i = 0; i < main.constructions.length; i++) {
         if (main.constructions[i].id == id) {
           main.constructions[i].purchased += 1
+          main.constructions[i].price = main.constructions[i].basePrice * Math.pow(1.15, main.constructions[i].purchased)
         }
       }
     }

@@ -1,14 +1,12 @@
 <template>
-    <div class="bg-red-400">Options</div> 
+  <div class="">Options</div>
 </template>
 
 <script lang="ts">
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="sass" scoped>
-div 
+div
     width: 50%
 </style>

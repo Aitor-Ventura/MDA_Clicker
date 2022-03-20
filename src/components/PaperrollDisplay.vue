@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <h1> {{ main.totalPoints }} pieces of paper rolls</h1>
-    <h2> {{ main.pointsPerSecond }} pieces/s</h2>
-  </div>
-  <div>
+  <div class="main">
+    <h1> {{ main.totalPoints }} papers </h1>
+    <h2> per second: {{ main.pointsPerSecond }}</h2>
     <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275">
   </div>
 </template>
@@ -18,12 +16,15 @@ main.addPointsPerSecond();
 </script>
 
 <style lang="sass" scoped>
-div 
+.main 
   width: 30%
   display: flex
   flex-direction: column
-  justify-content: center
   flex-wrap: wrap
   align-content: center
+
+.p1 
+  padding:1 em  
+
 
 </style>

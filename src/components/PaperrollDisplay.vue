@@ -1,35 +1,19 @@
 <template>
   <div>
-    <h1> {{ totalPoints }} {{}} pieces of paper rolls</h1>
+    <h1> {{ main.totalPoints }} pieces of paper rolls</h1>
     <h2> {{ pointsPerSecond }} pieces/s</h2>
   </div>
   <div>
-    <img @click="addPointsPerClick()" src="../../img/paperroll.png" width="275" height="275">
+    <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275">
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { useMainStore } from '../stores/mainStore'
 
-export default defineComponent({
-  data() {
-    return {
-      totalPoints: 0,
-      pointsPerClick: 1,
-      pointsPerSecond: 1
-    };
-  },
-  mounted: function () {
-    this.$nextTick(function() {
-      setInterval(() => {this.totalPoints += this.pointsPerSecond}, 1000)
-    })
-  },
-  methods: {
-    addPointsPerClick() {
-      this.totalPoints += this.pointsPerClick
-    }
-  }
-})
+const main = useMainStore();
+const { totalPoints, pointsPerSecond } = main;
+main.addPointsPerSecond();
 
 </script>
 

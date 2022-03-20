@@ -16,14 +16,15 @@ const main = useMainStore();
 
 function buyConstruction(id: string, price: number, pointsPerSecond: number) {
   main.$patch((state) => {
-    main.totalPoints -= price
-    main.pointsPerSecond += pointsPerSecond
+    if (main.totalPoints - price >= 0){
+      main.totalPoints -= price
+      main.pointsPerSecond += pointsPerSecond
 
-    for (let i = 0; i < main.constructions.length; i++) {
-      if (main.constructions[i].id == id) {
-        main.constructions[i].purchased += 1
+      for (let i = 0; i < main.constructions.length; i++) {
+        if (main.constructions[i].id == id) {
+          main.constructions[i].purchased += 1
+        }
       }
-      
     }
   })
 }

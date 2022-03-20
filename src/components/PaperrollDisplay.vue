@@ -1,13 +1,14 @@
 <template>
   <div class="main bg-red-500">
-    <h1> {{ main.totalPoints.toLocaleString('es-ES', {maximumFractionDigits: 2}) }} papers </h1>
-    <h2> per second: {{ main.pointsPerSecond.toLocaleString('es-ES', {maximumFractionDigits: 2}) }}</h2>
+    <h1> {{ abbreviateNumber(main.totalPoints, 2) }} papers </h1>
+    <h2> per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</h2>
     <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275">
   </div>
 </template>
 
 <script setup lang="ts">
 import { useMainStore } from '../stores/mainStore'
+import { abbreviateNumber } from "js-abbreviation-number"
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;

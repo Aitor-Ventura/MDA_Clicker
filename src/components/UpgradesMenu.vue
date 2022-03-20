@@ -18,8 +18,7 @@ const main = useMainStore();
 function buyConstruction(id: string, price: number, pointsPerSecond: number) {
   main.$patch((state) => {
     if (main.totalPoints - price >= 0){
-      //main.totalPoints -= price
-      main.totalPoints = Math.round((main.totalPoints - price) * 1e2) / 1e2
+      main.totalPoints -= price
       main.pointsPerSecond += pointsPerSecond
 
       for (let i = 0; i < main.constructions.length; i++) {

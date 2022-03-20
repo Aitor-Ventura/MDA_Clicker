@@ -1,6 +1,6 @@
 <template>
   <div class="main bg-red-500">
-    <h1> {{ abbreviateNumber(main.totalPoints, 2) }} papers </h1>
+    <h1> {{ abbreviateNumber(+main.totalPoints.toFixed(2), 2) }} papers </h1>
     <h2> per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</h2>
     <img @click="main.addPointsPerClick" src="../../img/paperroll.png" width="275" height="275">
   </div>

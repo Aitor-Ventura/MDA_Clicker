@@ -1,11 +1,11 @@
 import { defineStore } from "pinia"
-import producers from "@/assets/producers"
+import constructions from "@/assets/constructions"
 
 export const useMainStore = defineStore("main", {
     state: () => ({
         totalPoints: 0,
         pointsPerSecond: 1,
-        producers: producers
+        constructions: constructions
     }),
     getters: {
         doubleTotalPoints: state => {

@@ -3,8 +3,8 @@
     <div @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" class="constructionContainer" v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
       <img :src=item.srcImage width="110" height="110">
       <p>{{ item.name }}</p>
-      <p>{{ item.price }}</p>
-      <p>{{ item.purchased }}</p>
+      <p>{{ item.price.toLocaleString('es-ES', {maximumFractionDigits: 2}) }}</p>
+      <p>{{ item.purchased.toLocaleString('es-ES', {maximumFractionDigits: 2}) }}</p>
     </div>
   </div>
 </template>

@@ -9,8 +9,6 @@
     <div class="wave"></div>
     <div class="wave2"></div>
   </div>
-
-
 </template>
 
 <script setup lang="ts">

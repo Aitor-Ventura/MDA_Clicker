@@ -8,7 +8,7 @@ const constructions = [
     basePrice: 15,
     pointsPerSeconds: 3,
     purchased: 0,
-    srcImage: "/img/lumberjack1.png",
+    srcImage: "/src/assets/png/lumberjack1.png",
   },
   {
     id: uuidv4(),
@@ -17,7 +17,7 @@ const constructions = [
     basePrice: 100,
     pointsPerSeconds: 10,
     purchased: 0,
-    srcImage: "/img/shop.png",
+    srcImage: "/src/assets/png/shop.png",
   },
   {
     id: uuidv4(),
@@ -26,7 +26,7 @@ const constructions = [
     basePrice: 700,
     pointsPerSeconds: 50,
     purchased: 0,
-    srcImage: "/img/factory.png",
+    srcImage: "/src/assets/png/factory.png",
   },
   {
     id: uuidv4(),
@@ -35,7 +35,7 @@ const constructions = [
     basePrice: 1500,
     pointsPerSeconds: 125,
     purchased: 0,
-    srcImage: "/img/rocket.png",
+    srcImage: "/src/assets/png/rocket.png",
   },
 ];
 

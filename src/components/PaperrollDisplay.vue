@@ -46,7 +46,7 @@ main.addPointsPerSecond();
   width: 30%
   height: 100%
   background-repeat: no-repeat
-  animation: animate 5s linear infinite
+  animation: animate 4s linear infinite
   opacity: 1
   animation-delay: 0s
   bottom: 0
@@ -69,7 +69,7 @@ main.addPointsPerSecond();
 
 @keyframes animate
   0%
-    background-position-y: -100px
+    background-position-y: -400px
 
   100%
     background-position-y: 0

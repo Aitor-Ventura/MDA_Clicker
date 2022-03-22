@@ -8,5 +8,6 @@ export default {};
 
 <style lang="sass" scoped>
 div
-    width: 50%
+  width: 50%
+  //background: #001220
 </style>

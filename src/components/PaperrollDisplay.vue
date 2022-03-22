@@ -41,44 +41,23 @@ main.addPointsPerSecond();
 
 .fondo-crema
   position: absolute
-  width: 28%
+  width: 27%
   height: 100%
   background: url("../assets/svg/PaperrollBackgroundPolygridGrey.svg")
-  z-index: -10
-  background-repeat: no-repeat
+  z-index: -4
 
 .background-gris
   position: absolute
   width: 30%
   height: 100%
   //background: #b0b0b0
-  z-index: -10
-
-.wave
-  position: absolute
-  z-index: 12
-  top: 0
-  left: -3.5%
-  width: 30%
-  height: 100%
-  background-repeat: no-repeat
-  animation: animate 10s linear infinite
-  opacity: 1
-  animation-delay: 0s
-  animation-direction: alternate
-  @media screen and (max-height: 1800px)
-    background: url("../assets/svg/NormalWavePaperroll1.svg") // 900 x 2200
-    background-repeat: no-repeat
-  @media screen and (min-height: 1800px)
-    background: url("../assets/svg/NormalWavePaperroll2.svg") // 900 x 4000
-    background-repeat: no-repeat
-
+  z-index: -12
 
 .wave-large
   position: absolute
-  z-index: 1
+  z-index: -3
   top: 0
-  left: 26%
+  left: 25%
   width: 30%
   height: 100%
   background-repeat: no-repeat

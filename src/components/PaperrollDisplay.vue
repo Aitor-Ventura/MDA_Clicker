@@ -54,7 +54,6 @@ main.addPointsPerSecond();
 .arriba
   z-index: 10
 
-
 .paperroll
   max-width: 175px
   padding-top: 5em

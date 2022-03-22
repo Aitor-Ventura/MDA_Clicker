@@ -4,6 +4,7 @@
     <div class="arriba">{{ abbreviateNumber(+main.totalPoints.toFixed(2), 2) }} papers</div>
     <div class="arriba">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
     <img class="paperroll arriba" @click="main.addPointsPerClick" src="/src/assets/png/paperroll.png" width="275" height="275" />
+    <img src="/src/assets/png/rocket.png">
   </div>
   <div class="animation">
     <div class="wave"></div>

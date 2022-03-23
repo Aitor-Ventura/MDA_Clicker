@@ -9,5 +9,6 @@ export default {};
 <style lang="sass" scoped>
 div
   width: 50%
-  //background: #001220
+  background: #1c1c26
+  z-index: -200
 </style>

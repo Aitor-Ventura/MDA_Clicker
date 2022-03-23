@@ -1,7 +1,7 @@
 <template>
-  <div class="fondo-crema"></div>
+  <object class="sm:background-gris background-crema-peaks"></object>
   <div class="main select-none">
-    <div class="text-display mt-12">
+    <div class="text-display mt-12 mr-11">
       <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(2), 2) }} papers</div>
       <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
     </div>
@@ -39,19 +39,29 @@ main.addPointsPerSecond();
   width: 100%
   background: rgba(207, 207, 207, 0.7)
 
-.fondo-crema
+.fondo-crema-polyfill
   position: absolute
   width: 27%
   height: 100%
   background: url("../assets/svg/PaperrollBackgroundPolygridGrey.svg")
-  z-index: -4
-
-.background-gris
-  position: absolute
-  width: 30%
-  height: 100%
-  //background: #b0b0b0
+  opacity: 40%
   z-index: -12
+
+.background-crema-peaks
+  top: 0
+  background-size: contain
+  aspect-ratio: 700/2160
+  position: absolute
+  width: 27%
+  z-index: -12
+  background-repeat: no-repeat
+  @media screen and (max-width: 1250px)
+    background: url("../assets/svg/Pru2.svg") // 900 x 2200
+    height: 2200px
+  @media screen and (min-width: 1250px)
+    background: url("../assets/svg/Pru2.svg") // 900 x 2200
+
+
 
 .wave-large
   position: absolute

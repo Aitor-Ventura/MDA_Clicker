@@ -19,6 +19,10 @@ const { totalPoints, pointsPerSecond } = main;
 main.addPointsPerSecond();
 </script>
 
+<script lang="ts">
+export default {};
+</script>
+
 <style lang="sass" scoped>
 
 .main

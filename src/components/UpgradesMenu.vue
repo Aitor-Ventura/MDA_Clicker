@@ -33,6 +33,10 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number) {
 
 </script>
 
+<script lang="ts">
+export default {};
+</script>
+
 <style lang="sass" scoped>
 div 
   background: aqua

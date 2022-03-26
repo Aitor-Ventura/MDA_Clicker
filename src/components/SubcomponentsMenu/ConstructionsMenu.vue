@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMainStore } from '../stores/mainStore'
+import { useMainStore } from '../../stores/mainStore'
 import { abbreviateNumber } from "js-abbreviation-number"
 
 const main = useMainStore();
@@ -38,10 +38,6 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
-div 
-  background: aqua
-  width: 30%
-
 .constructionContainer
     width: auto
     display: flex

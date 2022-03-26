@@ -1,15 +1,15 @@
 <template>
   <main>
-    <PaperrollDisplay />
+    <PaperrollDisplay></PaperrollDisplay>
     <ItemsMenu />
-    <UpgradesMenu />
+    <MainMenu></MainMenu>
   </main>
 </template>
 
 <script setup lang="ts">
 import ItemsMenu from "../components/ItemsMenu.vue";
-import UpgradesMenu from "../components/UpgradesMenu.vue";
 import PaperrollDisplay from "../components/PaperrollDisplay.vue";
+import MainMenu from "../components/MainMenu.vue";
 </script>
 
 <style lang="sass">

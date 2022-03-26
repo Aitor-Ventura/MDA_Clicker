@@ -1,4 +1,6 @@
 <template>
+ <!-- THIS TEMPLATE CAN BE REMOVED OR IT NAME CAN BE MODIFIED TO REUSE IT
+      BUT DON'T FORGET TO MODIFIED "components [...]" IN "MainMenu.vue" -->
   <div>
       <p>probando</p>
       <p>sigo probando</p>

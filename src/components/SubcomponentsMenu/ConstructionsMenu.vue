@@ -15,6 +15,10 @@ import { abbreviateNumber } from "js-abbreviation-number"
 
 const main = useMainStore();
 
+/**
+ * Function that allow the user to buy constructions. Then, the price of the construction
+ * is modified, with the poins per seconds that are generated.
+ */
 function buyConstruction(id: string, price: number, pointsPerSecond: number) {
   main.$patch((state) => {
     if (main.totalPoints - price >= 0){

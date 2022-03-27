@@ -26,7 +26,6 @@ export default {};
 <style lang="sass" scoped>
 
 .main
-  //width: 30%
   height: 100%
   display: flex
   flex-direction: column
@@ -39,7 +38,6 @@ export default {};
   flex-wrap: wrap
   align-content: center
   justify-items: center
-  //width: 100%
   background: rgba(207, 207, 207, 0.7)
 
 .fondo-crema-polyfill

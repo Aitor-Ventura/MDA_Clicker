@@ -64,8 +64,6 @@ export default {};
   @media screen and (min-width: 1250px)
     background: url("../assets/svg/Pru2.svg") // 900 x 2200
 
-
-
 .wave-large
   position: absolute
   z-index: -3
@@ -86,7 +84,6 @@ export default {};
   @media screen and (min-height: 1800px)
     background: url("../assets/svg/LargeWavePaperroll2.svg") // 900 x 4000
     background-repeat: no-repeat
-
 
 .arriba
   z-index: 10

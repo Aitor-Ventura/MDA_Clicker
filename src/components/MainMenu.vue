@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen pt-4">
-    <component v-for="component in visibleComponent" :key="component.id" :is="component.name"></component>
+    <component v-for="(component, index) in visibleComponent" :key="index" :is="component.name"></component>
 
     <div class="w-full flex justify-end">
       <button class="mr-4" @click="nextMenu()">Next</button>
@@ -31,12 +31,10 @@ export default {
         {
           name: "ConstructionsMenu",
           visible: true,
-          id: 1
         },
-        { // THIS OBJECT CAN BE REMOVED OR IT NAME CAN BE MODIFIED TO REUSE IT BUT DON'T FORGET TO MODIFIED IT CORRESPONDING FILE NAME
+        { // THIS OBJECT CAN BE REMOVED OR IT NAME CAN BE MODIFIED TO REUSE IT BUT DON'T FORGET TO MODIFY IT CORRESPONDING FILE NAME
           name: "Probando",
           visible: false,
-          id: 2
         }
       ]
     }

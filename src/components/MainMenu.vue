@@ -1,6 +1,11 @@
 <template>
-  <component v-for="component in visibleComponent" :key="component.id" :is="component.name"></component>
-  <button @click="nextMenu()">Next</button>
+  <div class="h-screen pt-4">
+    <component v-for="component in visibleComponent" :key="component.id" :is="component.name"></component>
+
+    <div class="w-full flex justify-end">
+      <button class="mr-4" @click="nextMenu()">Next</button>
+    </div>
+  </div>
 
 </template>
 
@@ -56,6 +61,27 @@ export default {
 <style lang="sass" scoped>
 div 
   background: aqua
-  width: 30%
+  
+button 
+  display: inline-block
+  padding: 15px 25px
+  font-size: 24px
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  outline: none
+  color: #fff
+  background-color: #4CAF50
+  border: none
+  border-radius: 15px
+  box-shadow: 0 9px #999
+
+button:hover
+  background-color: #3e8e41
+
+button:active 
+  background-color: #3e8e41
+  box-shadow: 0 5px #666
+  transform: translateY(4px)
 
 </style>

@@ -2,9 +2,9 @@
   <div>
     <div @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" class="constructionContainer" v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
       <img :src=item.srcImage width="110" height="110">
-      <p>{{ item.name }}</p>
-      <p>{{ abbreviateNumber(item.price, 2) }}</p>
-      <p>{{ abbreviateNumber(item.purchased, 2) }}</p>
+      <p class="name">{{ item.name }}</p>
+      <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
+      <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
     </div>
   </div>
 </template>
@@ -43,13 +43,22 @@ export default {};
 
 <style lang="sass" scoped>
 .constructionContainer
-    width: auto
-    display: flex
-    align-items: center
-    justify-content: space-around
-    border: 5px solid black
-    margin: 1em 1em
+  width: auto
+  display: flex
+  align-items: center
+  justify-content: space-around
+  border: 5px solid black
+  margin-bottom: 1em
+  margin-right: 1em
+  margin-left: 1em
  
 .constructionContainer img
-    padding: .5em
+  padding: .5em
+
+.name
+  font-size: 28px
+
+.price, .purchased
+  font-size: 22px
+  font-weight: bold
 </style>

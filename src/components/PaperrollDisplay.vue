@@ -1,7 +1,7 @@
 <template>
   <object class="sm:background-gris background-crema-peaks"></object>
   <div class="main select-none">
-    <div class="text-display mt-12 mr-11">
+    <div class="text-display mt-12 mr-11 ml-11">
       <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(2), 2) }} papers</div>
       <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
     </div>
@@ -26,13 +26,12 @@ export default {};
 <style lang="sass" scoped>
 
 .main
-  width: 30%
+  //width: 30%
   height: 100%
   display: flex
   flex-direction: column
-  flex-wrap: wrap
   align-content: center
-  justify-items: center
+  margin-right: 8em
 
 .text-display
   display: flex
@@ -40,7 +39,7 @@ export default {};
   flex-wrap: wrap
   align-content: center
   justify-items: center
-  width: 100%
+  //width: 100%
   background: rgba(207, 207, 207, 0.7)
 
 .fondo-crema-polyfill
@@ -75,6 +74,7 @@ export default {};
   width: 30%
   height: 100%
   background-repeat: no-repeat
+  background-color: aqua !important
   animation: animate 10s linear infinite
   opacity: 1
   animation-delay: 0s
@@ -96,6 +96,7 @@ export default {};
   padding-top: 5em
   z-index: 1000
   align-self: center
+  cursor: pointer
 
 @keyframes animate
   0%

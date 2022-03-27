@@ -1,23 +1,25 @@
 <template>
-  <main>
-    <PaperrollDisplay></PaperrollDisplay>
-    <ItemsMenu />
-    <MainMenu></MainMenu>
+  <main class="w-full h-full flex flex-row items-stretch">
+    <div class="w-1/3">
+      <PaperrollDisplay></PaperrollDisplay>
+    </div>
+
+    <div class="w-2/3">
+      <MainMenu></MainMenu>
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
-import ItemsMenu from "../components/ItemsMenu.vue";
 import PaperrollDisplay from "../components/PaperrollDisplay.vue";
 import MainMenu from "../components/MainMenu.vue";
 </script>
 
 <style lang="sass">
-main
-  display: flex
-  flex-direction: row
-  align-items: stretch
-  height: 100vh
+// Imported font from Google
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap')
+
 body
+  font-family: 'Merriweather', serif
   margin: 0
 </style>

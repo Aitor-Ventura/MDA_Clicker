@@ -1,4 +1,6 @@
 <template>
+  <h1 class="text-4xl text-center mb-8">That's right, come here and expend all your points, baby... 🤑</h1>
+
   <div>
     <div @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" class="constructionContainer" v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
       <img :src=item.srcImage width="110" height="110">
@@ -51,6 +53,7 @@ export default {};
   margin-bottom: 1em
   margin-right: 1em
   margin-left: 1em
+  cursor: pointer
  
 .constructionContainer img
   padding: .5em

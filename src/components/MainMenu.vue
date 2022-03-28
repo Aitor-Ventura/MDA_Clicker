@@ -11,9 +11,8 @@
 <script setup lang="ts">
 import { thisTypeAnnotation } from "@babel/types";
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
-import Probando from "./SubcomponentsMenu/Probando.vue";
+import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
 import Testing from "./SubcomponentsMenu/Testing.vue";
-
 </script>
 
 <script lang="ts">
@@ -35,8 +34,8 @@ export default {
           visible: true,
           position: 0
         },
-        { // THIS OBJECT CAN BE REMOVED OR IT NAME CAN BE MODIFIED TO REUSE IT BUT DON'T FORGET TO MODIFY IT CORRESPONDING FILE NAME
-          name: "Probando",
+        {
+          name: "UpgradesMenu",
           visible: false,
           position: 1
         },
@@ -50,7 +49,7 @@ export default {
     }
   },
   components: {
-    ConstructionsMenu, Probando, Testing
+    ConstructionsMenu, UpgradesMenu, Testing
   },
   methods: {
     /**

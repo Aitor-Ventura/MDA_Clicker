@@ -3,7 +3,7 @@
     <component :is="component.name"></component>
 
     <div class="w-full flex justify-end">
-      <button class="mr-4" @click="nextMenu(component.position)">Next</button>
+      <button class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
     </div>
   </div>
 </template>
@@ -12,7 +12,6 @@
 import { thisTypeAnnotation } from "@babel/types";
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
-import Testing from "./SubcomponentsMenu/Testing.vue";
 </script>
 
 <script lang="ts">
@@ -39,17 +38,11 @@ export default {
           visible: false,
           position: 1
         },
-        {
-          // THIS OBJECT CAN BE REMOVED OR IT NAME CAN BE MODIFIED TO REUSE IT BUT DON'T FORGET TO MODIFY IT CORRESPONDING FILE NAME
-          name: "Testing",
-          visible: false,
-          position: 2
-        }
       ]
     }
   },
   components: {
-    ConstructionsMenu, UpgradesMenu, Testing
+    ConstructionsMenu, UpgradesMenu
   },
   methods: {
     /**

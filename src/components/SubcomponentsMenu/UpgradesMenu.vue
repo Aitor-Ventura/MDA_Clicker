@@ -19,6 +19,9 @@ import { abbreviateNumber } from "js-abbreviation-number"
 
 const main = useMainStore();
 
+/**
+ * Function that allow the user to buy upgrades. Then, the points per seconds are increased.
+ */
 function buyUpgrade(id: string, price: number, purchased: boolean, pointsPerSeconds: number) {
   main.$patch((state) => {
     if (main.totalPoints - price >= 0 && purchased == false) {

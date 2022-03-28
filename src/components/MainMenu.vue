@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4">
+  <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4 component">
     <component :is="component.name"></component>
 
     <div class="w-full flex justify-end">
@@ -73,6 +73,9 @@ export default {
 <style lang="sass" scoped>
 div 
   background: aqua
+
+.component
+  overflow-y: scroll
   
 button 
   display: inline-block

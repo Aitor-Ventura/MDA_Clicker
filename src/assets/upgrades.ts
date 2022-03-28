@@ -7,8 +7,7 @@ const upgrades = [
     price: 15000,
     pointsPerSeconds: 100,
     purchased: false,
-    //srcImage: "/img/upg/paper.png",
-    srcImage: "/public/upg/paper.png"
+    srcImage: "/img/upg/paper.png",
   },
   {
     id: uuidv4(),
@@ -88,7 +87,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/the_bag.png",
+    srcImage: "/img/upg/rocket_poo.png",
   },
   {
     id: uuidv4(),
@@ -96,7 +95,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/the_bag.png",
+    srcImage: "/img/upg/pedrocket.png",
   },
 ];
 

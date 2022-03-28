@@ -21,7 +21,7 @@ const upgrades = [
     id: uuidv4(),
     name: "Europaper 💶",
     price: 500000,
-    pointsPerSeconds: 1000,
+    pointsPerSeconds: 500,
     purchased: false,
     srcImage: "/img/upg/euro_paper.png",
   },

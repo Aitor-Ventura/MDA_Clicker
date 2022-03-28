@@ -1,4 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
+import paper from "./upgradesImg/paper.png"
+import paper_poo from "./upgradesImg/paper_poo.png"
+import euro_paper from "./upgradesImg/euro_paper.png"
+
+import paper_axe from "./upgradesImg/paper_axe.png"
+import stinky_axe from "./upgradesImg/stinky_axe.png"
+import euro_axe from "./upgradesImg/euro_axe.png"
+
+import bag_paper from "./upgradesImg/bag_paper.png"
+import suspicious_bag from "./upgradesImg/suspicious_bag.png"
+import the_bag from "./upgradesImg/the_bag.png"
+
+import rocket_paper from "./upgradesImg/rocket_paper.png"
+import rocket_poo from "./upgradesImg/rocket_poo.png"
+import pedrocket from "./upgradesImg/pedrocket.png"
+
 
 const upgrades = [
   {
@@ -7,7 +23,7 @@ const upgrades = [
     price: 15000,
     pointsPerSeconds: 100,
     purchased: false,
-    srcImage: "/img/upg/paper.png",
+    srcImage: paper,
   },
   {
     id: uuidv4(),
@@ -15,7 +31,7 @@ const upgrades = [
     price: 50000,
     pointsPerSeconds: 200,
     purchased: false,
-    srcImage: "/img/upg/paper_poo.png",
+    srcImage: paper_poo,
   },
   {
     id: uuidv4(),
@@ -23,7 +39,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/euro_paper.png",
+    srcImage: euro_paper,
   },
   {
     id: uuidv4(),
@@ -31,7 +47,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/paper_axe.png",
+    srcImage: paper_axe,
   },
   {
     id: uuidv4(),
@@ -39,7 +55,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/stinky_axe.png",
+    srcImage: stinky_axe,
   },
   {
     id: uuidv4(),
@@ -47,7 +63,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/euro_axe.png",
+    srcImage: euro_axe,
   },
   {
     id: uuidv4(),
@@ -55,7 +71,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/bag_paper.png",
+    srcImage: bag_paper,
   },
   {
     id: uuidv4(),
@@ -63,7 +79,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/suspicious_bag.png",
+    srcImage: suspicious_bag,
   },
   {
     id: uuidv4(),
@@ -71,7 +87,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/the_bag.png",
+    srcImage: the_bag,
   },
   {
     id: uuidv4(),
@@ -79,7 +95,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/rocket_paper.png",
+    srcImage: rocket_paper,
   },
   {
     id: uuidv4(),
@@ -87,7 +103,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/rocket_poo.png",
+    srcImage: rocket_poo,
   },
   {
     id: uuidv4(),
@@ -95,7 +111,7 @@ const upgrades = [
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
-    srcImage: "/img/upg/pedrocket.png",
+    srcImage: pedrocket,
   },
 ];
 

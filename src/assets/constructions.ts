@@ -1,5 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
-import lumberjack1 from "/src/assets/png/lumberjack1.png";
+import lumberjack1 from "./constructionsImg/lumberjack1.png";
+import shop from "./constructionsImg/shop.png";
+import factory from "./constructionsImg/factory.png";
+import rocket from "./constructionsImg/rocket.png";
 
 const constructions = [
   {
@@ -18,7 +21,7 @@ const constructions = [
     basePrice: 100,
     pointsPerSeconds: 10,
     purchased: 0,
-    srcImage: "/src/assets/png/shop.png",
+    srcImage: shop,
   },
   {
     id: uuidv4(),
@@ -27,7 +30,7 @@ const constructions = [
     basePrice: 700,
     pointsPerSeconds: 20,
     purchased: 0,
-    srcImage: "/src/assets/png/factory.png",
+    srcImage: factory,
   },
   {
     id: uuidv4(),
@@ -36,7 +39,7 @@ const constructions = [
     basePrice: 1500,
     pointsPerSeconds: 75,
     purchased: 0,
-    srcImage: "/src/assets/png/rocket.png",
+    srcImage: rocket,
   },
 ];
 

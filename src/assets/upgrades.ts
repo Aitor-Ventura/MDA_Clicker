@@ -7,7 +7,8 @@ const upgrades = [
     price: 15000,
     pointsPerSeconds: 100,
     purchased: false,
-    srcImage: "/img/upg/paper.png",
+    //srcImage: "/img/upg/paper.png",
+    srcImage: "/public/upg/paper.png"
   },
   {
     id: uuidv4(),
@@ -64,14 +65,6 @@ const upgrades = [
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: "/img/upg/suspicious_bag.png",
-  },
-  {
-    id: uuidv4(),
-    name: "Europaper 💶",
-    price: 500000,
-    pointsPerSeconds: 500,
-    purchased: false,
-    srcImage: "/img/upg/euro_paper.png",
   },
   {
     id: uuidv4(),

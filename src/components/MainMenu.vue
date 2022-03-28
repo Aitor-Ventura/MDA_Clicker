@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { thisTypeAnnotation } from "@babel/types";
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
 </script>

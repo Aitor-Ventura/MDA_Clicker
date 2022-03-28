@@ -8,7 +8,8 @@ const constructions = [
     basePrice: 15,
     pointsPerSeconds: 3,
     purchased: 0,
-    srcImage: "/src/assets/png/lumberjack1.png",
+    //srcImage: "/src/assets/png/lumberjack1.png",
+    srcImage: "../../assets/png/lumberjack1.png",
   },
   {
     id: uuidv4(),

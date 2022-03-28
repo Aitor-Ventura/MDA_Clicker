@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-4xl text-center mb-8">That's right, come here and expend all your points, baby... 🤑</h1>
+  <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
 
   <div>
     <div class="constructionContainer" 

@@ -4,8 +4,8 @@
   <div>
     <div class="constructionContainer" 
          @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" 
-         v-for="(item,index) in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
-      <img :src=main.getImages()[index] width="110" height="110">
+         v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
+      <img :src=item.srcImage width="110" height="110">
       <p class="name">{{ item.name }}</p>
       <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
       <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>

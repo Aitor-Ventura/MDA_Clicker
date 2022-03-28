@@ -23,13 +23,5 @@ export const useMainStore = defineStore("main", {
         addPointsPerSecond() {
             setInterval(() => {this.totalPoints += this.pointsPerSecond}, 1000)
         },
-        getImages() {
-            var element: string[] = new Array(constructions.length)
-          
-            for (var i = 0; i < element.length; i++) {
-              element[i] = constructions[i].srcImage;
-            }
-            return element
-          }        
     }
 })

@@ -5,7 +5,7 @@
     <div class="constructionContainer" 
          @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" 
          v-for="(item,index) in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
-      <img :src=getImages()[index] width="110" height="110">
+      <img :src=main.getImages()[index] width="110" height="110">
       <p class="name">{{ item.name }}</p>
       <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
       <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
@@ -18,15 +18,6 @@ import { useMainStore } from '../../stores/mainStore'
 import { abbreviateNumber } from "js-abbreviation-number"
 
 const main = useMainStore();
-
-function getImages() {
-  var element: string[] = new Array(main.constructions.length)
-
-  for (var i = 0; i < element.length; i++) {
-    element[i] = main.constructions[i].srcImage;
-  }
-  return element
-}
 
 /**
  * Function that allow the user to buy constructions. Then, the price of the construction

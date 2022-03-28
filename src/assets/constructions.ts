@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import lumberjack1 from "/src/assets/png/lumberjack1.png";
 
 const constructions = [
   {
@@ -8,7 +9,7 @@ const constructions = [
     basePrice: 15,
     pointsPerSeconds: 3,
     purchased: 0,
-    srcImage: "../../../src/assets/png/lumberjack1.png",
+    srcImage: lumberjack1,
   },
   {
     id: uuidv4(),

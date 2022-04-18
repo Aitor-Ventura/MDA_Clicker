@@ -6,7 +6,7 @@
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond * 10, 2) }}</div>
       </div>
-      <img class="paperroll arriba" @click="main.addPointsPerClick" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
+      <img draggable="false" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     </div>
     <div class="wave-large"></div>
   </div>
@@ -19,6 +19,11 @@ import { abbreviateNumber } from "js-abbreviation-number";
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
 main.addPointsPerSecond();
+
+function addPointsPerClick() {
+  console.log("AAA");
+  main.addPointsPerClick();
+}
 </script>
 
 <script lang="ts">
@@ -59,6 +64,8 @@ export default {};
   z-index: -12
   background-repeat: no-repeat
   background: url("../assets/svg/PaperrollBackgroundPeaksGrey.svg") // 900 x 2200
+  height: 2200px
+
 
 .wave-large
   position: absolute
@@ -69,7 +76,7 @@ export default {};
   height: 100%
   background-repeat: no-repeat
   background-color: aqua !important
-  animation: animate 10s linear infinite
+  animation: infinite-down 10s linear infinite
   opacity: 1
   animation-delay: 0s
   bottom: 0
@@ -90,11 +97,29 @@ export default {};
   z-index: 1000
   align-self: center
   cursor: pointer
+  animation: float 6s ease-in-out infinite
 
-@keyframes animate
+@keyframes infinite-down
   0%
     background-position-y: -400px
 
   100%
     background-position-y: 0
+
+@keyframes float
+  0%
+    transform: translatey(0px)
+
+  50%
+    transform: translatey(-8px)
+
+  100%
+    transform: translatey(0px)
+
+@keyframes pulse
+  0%
+    transform: scale(0.95)
+
+  70%
+    transform: scale(1)
 </style>

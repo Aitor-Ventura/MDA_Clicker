@@ -1,13 +1,15 @@
 <template>
-  <object class="sm:background-gris background-crema-peaks"></object>
-  <div class="main select-none">
-    <div class="text-display mt-12 mr-11 ml-11">
-      <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
-      <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond*10, 2) }}</div>
+  <div>
+    <div class="sm:background-gris background-crema-peaks"></div>
+    <div class="main select-none">
+      <div class="text-display mt-12 mr-11 ml-11">
+        <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
+        <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond * 10, 2) }}</div>
+      </div>
+      <img class="paperroll arriba" @click="main.addPointsPerClick" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     </div>
-    <img class="paperroll arriba" @click="main.addPointsPerClick" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
+    <div class="wave-large"></div>
   </div>
-  <div class="wave-large"></div>
 </template>
 
 <script setup lang="ts">
@@ -56,11 +58,7 @@ export default {};
   width: 27%
   z-index: -12
   background-repeat: no-repeat
-  @media screen and (max-width: 1250px)
-    background: url("../assets/svg/Pru2.svg") // 900 x 2200
-    height: 2200px
-  @media screen and (min-width: 1250px)
-    background: url("../assets/svg/Pru2.svg") // 900 x 2200
+  background: url("../assets/svg/PaperrollBackgroundPeaksGrey.svg") // 900 x 2200
 
 .wave-large
   position: absolute

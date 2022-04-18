@@ -6,7 +6,7 @@
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
-      <img draggable="false" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
+      <img draggable="false" id="tunnel" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     </div>
     <div class="wave-large"></div>
   </div>
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { useMainStore } from "../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
-
+import { ref } from "vue";
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
 main.addPointsPerSecond();
@@ -98,6 +98,9 @@ export default {};
   cursor: pointer
   animation: float 6s ease-in-out infinite
 
+.blob
+  animation: pulse 2s infinite
+
 @keyframes infinite-down
   0%
     background-position-y: -400px
@@ -121,4 +124,7 @@ export default {};
 
   70%
     transform: scale(1)
+
+  100%
+    transform: scale(0.95)
 </style>

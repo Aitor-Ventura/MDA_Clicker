@@ -5,7 +5,7 @@ import upgrades from "@/assets/upgrades"
 export const useMainStore = defineStore("main", {
     state: () => ({
         totalPoints: 0,
-        pointsPerSecond: 1,
+        pointsPerSecond: 0.1,
         pointsPerClick: 1,
         constructions: constructions,
         upgrades: upgrades,
@@ -21,7 +21,7 @@ export const useMainStore = defineStore("main", {
             this.totalPoints += this.pointsPerClick;
         },
         addPointsPerSecond() {
-            setInterval(() => {this.totalPoints += this.pointsPerSecond}, 1000)
+            setInterval(() => {this.totalPoints += this.pointsPerSecond}, 100)
         },
     }
 })

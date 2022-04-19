@@ -8,7 +8,6 @@
       </div>
       <img draggable="false" id="tunnel" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     </div>
-    <img class="paperroll arriba" @click="main.addPointsPerClick" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     <div class="wave-large"></div>
   </div>
 </template>

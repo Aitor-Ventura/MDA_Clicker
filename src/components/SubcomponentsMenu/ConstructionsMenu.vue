@@ -28,6 +28,7 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number) {
     if (main.totalPoints - price >= 0){
       main.totalPoints -= price
       main.pointsPerSecond += pointsPerSecond
+      document.cookie = "pointsPerSecond=" + main.pointsPerSecond
       main.addPointsPerSecond()
 
       for (let i = 0; i < main.constructions.length; i++) {

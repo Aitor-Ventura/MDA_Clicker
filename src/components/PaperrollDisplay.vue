@@ -18,7 +18,11 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import { ref } from "vue";
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
+if(main.checkCookie("totalPoints")) {
+  main.totalPoints = parseInt(main.getCookie("totalPoints"))
+}
 main.addPointsPerSecond();
+setInterval(() => { document.cookie = "totalPoints=" + main.totalPoints }, 1000)
 
 function addPointsPerClick() {
   main.addPointsPerClick();

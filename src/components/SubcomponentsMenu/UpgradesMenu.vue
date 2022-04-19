@@ -27,6 +27,8 @@ function buyUpgrade(id: string, price: number, purchased: boolean, pointsPerSeco
     if (main.totalPoints - price >= 0 && purchased == false) {
       main.totalPoints -= price
       main.pointsPerSecond += pointsPerSeconds
+      document.cookie = "pointsPerSecond=" + main.pointsPerSecond
+      main.addPointsPerSecond()
 
       for (let i = 0; i < main.upgrades.length; i++) {
         if (main.upgrades[i].id == id) {

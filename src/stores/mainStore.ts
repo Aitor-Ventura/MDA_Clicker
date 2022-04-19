@@ -10,6 +10,7 @@ export const useMainStore = defineStore("main", {
         interval: setInterval(() => { }, 1000),
         constructions: constructions,
         upgrades: upgrades,
+
     }),
     getters: {
         doubleTotalPoints: state => {
@@ -22,6 +23,9 @@ export const useMainStore = defineStore("main", {
             this.totalPoints += this.pointsPerClick;
         },
         addPointsPerSecond() {
+            if(this.checkCookie("pointsPerSecond")) {
+                this.pointsPerSecond = parseInt(this.getCookie("pointsPerSecond"))
+            }
             clearInterval(this.interval)
             if(this.pointsPerSecond < 13){
                 this.interval = setInterval(() => {this.totalPoints += 1}, (1/this.pointsPerSecond)*1000)
@@ -29,6 +33,27 @@ export const useMainStore = defineStore("main", {
                 this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16}, 62.5)
             }
             
+        },
+        getCookie(cname: String) {
+            let name = cname + "=";
+            let ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+        },
+        checkCookie(cname: String) {
+            if(this.getCookie(cname) != "") {
+                return true
+            } else {
+                return false
+            }
         },
     }
 })

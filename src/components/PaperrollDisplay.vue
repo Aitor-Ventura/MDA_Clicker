@@ -8,6 +8,7 @@
       </div>
       <img draggable="false" id="tunnel" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     </div>
+    <img class="paperroll arriba" @click="main.addPointsPerClick" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
     <div class="wave-large"></div>
   </div>
 </template>
@@ -63,7 +64,6 @@ export default {};
   z-index: -12
   background-repeat: no-repeat
   background: url("../assets/svg/PaperrollBackgroundPeaksGrey.svg") // 900 x 2200
-  height: 2200px
 
 
 .wave-large

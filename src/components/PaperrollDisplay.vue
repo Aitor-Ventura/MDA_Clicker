@@ -39,12 +39,10 @@ const addPointsPerClick = async () => {
   // Si se está ejecutando la animación no la pisamos
   // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
   if (animating === false) {
-    console.log("AAAA");
     animating = true;
     // Animación a pelo
     paperrollStyle.width = "max-width: 166px";
     await sleep(50);
-    console.log("BBB");
     paperrollStyle.width = "max-width: 175px";
     await sleep(50);
     animating = false;

@@ -1,7 +1,6 @@
 <template>
   <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4 component">
     <component :is="component.name"></component>
-
     <div class="w-full flex justify-end">
       <button class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
     </div>

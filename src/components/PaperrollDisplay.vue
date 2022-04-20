@@ -6,27 +6,52 @@
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
-      <img draggable="false" id="tunnel" class="paperroll arriba blob" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" width="275" height="275" />
+      <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" src="../assets/constructionsImg/paperroll.png" />
     </div>
     <div class="wave-large"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { reactive, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
-import { ref } from "vue";
+
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
-if(main.checkCookie("totalPoints")) {
-  main.totalPoints = parseInt(main.getCookie("totalPoints"))
+if (main.checkCookie("totalPoints")) {
+  main.totalPoints = parseInt(main.getCookie("totalPoints"));
 }
 main.addPointsPerSecond();
-setInterval(() => { document.cookie = "totalPoints=" + main.totalPoints }, 1000)
+setInterval(() => {
+  document.cookie = "totalPoints=" + main.totalPoints;
+}, 1000);
 
-function addPointsPerClick() {
+let paperrollStyle = reactive({ width: "max-width: 175px" }); //reactive({ width: "max-width: 175px" });
+let paperrollWidth = computed(() => {
+  return paperrollStyle.width;
+});
+let animating = false;
+// sleep(t) -> Espera t milisegundos
+const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
+
+const addPointsPerClick = async () => {
+  // Si se está ejecutando la animación no la pisamos
+  // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
+  if (animating === false) {
+    console.log("AAAA");
+    animating = true;
+    // Animación a pelo
+    paperrollStyle.width = "max-width: 166px";
+    await sleep(50);
+    console.log("BBB");
+    paperrollStyle.width = "max-width: 175px";
+    await sleep(50);
+    animating = false;
+  }
+
   main.addPointsPerClick();
-}
+};
 </script>
 
 <script lang="ts">
@@ -58,6 +83,7 @@ export default {};
   opacity: 40%
   z-index: -12
 
+
 .background-crema-peaks
   top: 0
   background-size: contain
@@ -67,7 +93,7 @@ export default {};
   z-index: -12
   background-repeat: no-repeat
   background: url("../assets/svg/PaperrollBackgroundPeaksGrey.svg") // 900 x 2200
-
+  height: 2200px
 
 .wave-large
   position: absolute
@@ -94,15 +120,13 @@ export default {};
   z-index: 10
 
 .paperroll
-  max-width: 175px
   padding-top: 5em
   z-index: 1000
   align-self: center
   cursor: pointer
   animation: float 6s ease-in-out infinite
+  transition: max-width 0.05s
 
-.blob
-  animation: pulse 2s infinite
 
 @keyframes infinite-down
   0%

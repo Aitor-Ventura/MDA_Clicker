@@ -10,7 +10,7 @@ export const useMainStore = defineStore("main", {
         interval: setInterval(() => { }, 1000),
         constructions: constructions,
         upgrades: upgrades,
-
+        check1: false
     }),
     getters: {
         doubleTotalPoints: state => {

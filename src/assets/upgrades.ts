@@ -20,6 +20,7 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Paper 🧻",
+    type: "Basic",
     price: 15000,
     pointsPerSeconds: 100,
     purchased: false,
@@ -28,6 +29,7 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Paper with poo 💩",
+    type: "Basic",
     price: 50000,
     pointsPerSeconds: 200,
     purchased: false,
@@ -36,6 +38,7 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Europaper 💶",
+    type: "Basic",
     price: 500000,
     pointsPerSeconds: 500,
     purchased: false,
@@ -44,7 +47,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Paper axe 🪓",
-    price: 500000,
+    type: "Lumberjack",
+    price: 25000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: paper_axe,
@@ -52,7 +56,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Stinky axe 🤢",
-    price: 500000,
+    type: "Lumberjack",
+    price: 60000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: stinky_axe,
@@ -60,7 +65,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Euroaxe 💶",
-    price: 500000,
+    type: "Lumberjack",
+    price: 600000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: euro_axe,
@@ -68,7 +74,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Bag of paper 💰",
-    price: 500000,
+    type: "Shop",
+    price: 35000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: bag_paper,
@@ -76,7 +83,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Suspicious bag 🤨",
-    price: 500000,
+    type: "Shop",
+    price: 70000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: suspicious_bag,
@@ -84,7 +92,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "THE BAG 👑",
-    price: 500000,
+    type: "Shop",
+    price: 700000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: the_bag,
@@ -92,7 +101,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "A normal rocket 🚀",
-    price: 500000,
+    type: "Rocket",
+    price: 45000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: rocket_paper,
@@ -100,7 +110,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "A rocket with... is that poo? 🟤",
-    price: 500000,
+    type: "Rocket",
+    price: 80000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: rocket_poo,
@@ -108,7 +119,8 @@ const upgrades = [
   {
     id: uuidv4(),
     name: "Pedro Sánchez's Rocket 🏆",
-    price: 500000,
+    type: "Rocket",
+    price: 999999,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: pedrocket,

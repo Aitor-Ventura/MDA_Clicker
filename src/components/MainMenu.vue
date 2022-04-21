@@ -20,9 +20,9 @@ export default {
      * Filter all components to find out which ones are visible (Only one should be visible)
      * This will allow us to display the corresponding menu
      */
-    visibleComponent: function() { 
-      return this.components.filter(i => i.visible === true)
-    }
+    visibleComponent: function () {
+      return this.components.filter((i) => i.visible === true);
+    },
   },
   data() {
     return {
@@ -30,46 +30,47 @@ export default {
         {
           name: "ConstructionsMenu",
           visible: true,
-          position: 0
+          position: 0,
         },
         {
           name: "UpgradesMenu",
           visible: false,
-          position: 1
+          position: 1,
         },
-      ]
-    }
+      ],
+    };
   },
   components: {
-    ConstructionsMenu, UpgradesMenu
+    ConstructionsMenu,
+    UpgradesMenu,
   },
   methods: {
     /**
      * Makes the actual menu hidden and the following menu visible
      */
     nextMenu(pos: number): void {
-      this.components[pos].visible = false
+      this.components[pos].visible = false;
 
       if (pos++ < this.components.length - 1) {
-        this.components[pos++].visible = true
+        this.components[pos++].visible = true;
       } else {
         // If the actual component is the last one in the array, then the next menu that should be
         // visible is the starter one
-        this.components[0].visible = true
+        this.components[0].visible = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="sass" scoped>
-div 
-  background: aqua
-
+div
+  background: #333333
+  color: lightgrey
 .component
   overflow-y: scroll
-  
-button 
+
+button
   display: inline-block
   padding: 15px 25px
   font-size: 24px
@@ -86,7 +87,7 @@ button
 button:hover
   background-color: #3e8e41
 
-button:active 
+button:active
   background-color: #3e8e41
   box-shadow: 0 5px #666
   transform: translateY(4px)

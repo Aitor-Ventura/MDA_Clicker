@@ -101,7 +101,7 @@ export default {};
   width: 30%
   height: 100%
   background-repeat: no-repeat
-  background-color: aqua !important
+  background-color: #333333 !important
   animation: infinite-down 10s linear infinite
   opacity: 1
   animation-delay: 0s

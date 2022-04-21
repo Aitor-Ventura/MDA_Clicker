@@ -3,7 +3,7 @@
 
     <div class="grid grid-cols-3 justify-items-center mb-8 gap-y-8">
         <div class="cursor-pointer border-solid border-2 border-black rounded-lg" 
-             @click="buyUpgrade(upgrade.id, upgrade.price, upgrade.purchased, upgrade.pointsPerSeconds)" 
+             @click="buyUpgrade(upgrade.id, upgrade.type, upgrade.price, upgrade.purchased, upgrade.pointsPerSeconds)" 
              v-for="upgrade in main.upgrades" :key="upgrade.id" :id=upgrade.id :name=upgrade.name :price=upgrade.price
              :style="[upgrade.purchased == true ? 'opacity: 0.7' : 'opacity: 1']">
             <img :src="upgrade.srcImage">
@@ -22,11 +22,27 @@ const main = useMainStore();
 /**
  * Function that allow the user to buy upgrades. Then, the points per seconds are increased.
  */
-function buyUpgrade(id: string, price: number, purchased: boolean, pointsPerSeconds: number) {
+function buyUpgrade(id: string, type: string, price: number, purchased: boolean, pointsPerSeconds: number) {
   main.$patch((state) => {
     if (main.totalPoints - price >= 0 && purchased == false) {
+      switch(type) {
+        case "Basic":
+          main.pointsPerSecond += pointsPerSeconds
+          break;
+        case "Lumberjack":
+          main.constructions[0].pointsPerSeconds += pointsPerSeconds
+          break;
+        case "Shop":
+          main.constructions[1].pointsPerSeconds += pointsPerSeconds
+          break;
+        case "Factory":
+          main.constructions[2].pointsPerSeconds += pointsPerSeconds
+          break;
+        case "Rocket":
+          main.constructions[3].pointsPerSeconds += pointsPerSeconds
+          break;                    
+      }
       main.totalPoints -= price
-      main.pointsPerSecond += pointsPerSeconds
       document.cookie = "pointsPerSecond=" + main.pointsPerSecond
       main.addPointsPerSecond()
 

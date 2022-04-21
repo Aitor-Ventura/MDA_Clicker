@@ -2,9 +2,9 @@
   <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
 
   <div>
-    <div class="constructionContainer" 
-         @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)" 
-         v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price>
+    <div v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price
+         class="constructionContainer" :title="details(item.pointsPerSeconds)"
+         @click="buyConstruction(item.id, item.price, item.pointsPerSeconds)">
       <img :src=item.srcImage width="110" height="110">
       <p class="name">{{ item.name }}</p>
       <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import { useMainStore } from '../../stores/mainStore'
 import { abbreviateNumber } from "js-abbreviation-number"
+import { isTemplateNode } from '@vue/compiler-core';
 
 const main = useMainStore();
 
@@ -41,10 +42,16 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number) {
   })
 }
 
+/**
+ * Function that allow the user to see the points per seconds that generate any construction while hovering it
+ */
+function details(pointsPerSeconds: number) {
+  return "PointsPerSecond: " + pointsPerSeconds
+}
 </script>
 
 <script lang="ts">
-export default {};
+export default { };
 </script>
 
 <style lang="sass" scoped>

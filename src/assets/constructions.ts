@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import lumberjack1 from "./constructionsImg/lumberjack1.png";
-import shop from "./constructionsImg/shop.png";
+import shop from "./constructionsImg/Shop.png";
 import factory from "./constructionsImg/factory.png";
 import rocket from "./constructionsImg/rocket.png";
 

@@ -3,7 +3,7 @@
 
   <div>
     <div v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price
-          :title="details(item.pointsPerSeconds)"
+          :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
          @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)">
       <div class="constructionContainer">
         <img :src=item.srcImage width="110" height="110">
@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { useMainStore } from '../../stores/mainStore'
 import { abbreviateNumber } from "js-abbreviation-number"
+import { isTemplateNode } from '@vue/compiler-core';
 
 const main = useMainStore();
 
@@ -95,8 +96,9 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number, how
 /**
  * Function that allow the user to see the points per seconds that generate any construction while hovering it
  */
-function details(pointsPerSeconds: number) {
-  return "PointsPerSecond: " + pointsPerSeconds
+function details(basePointsPerSeconds: number, pointsPerSeconds: number, name: string, purchased: number) {
+  return "Each " + name + " produces " + basePointsPerSeconds + " paper rolls per second\n" 
+         + "In total, they produced " + (pointsPerSeconds * purchased) + " paper rolls"
 }
 </script>
 

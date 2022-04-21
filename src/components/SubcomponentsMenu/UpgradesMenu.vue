@@ -6,7 +6,7 @@
              @click="buyUpgrade(upgrade.id, upgrade.type, upgrade.price, upgrade.purchased, upgrade.pointsPerSeconds)" 
              v-for="upgrade in main.upgrades" :key="upgrade.id" :id=upgrade.id :name=upgrade.name :price=upgrade.price
              :style="[upgrade.purchased == true ? 'opacity: 0.7' : 'opacity: 1']">
-            <img :src="upgrade.srcImage">
+            <img :src="upgrade.srcImage" loading="lazy">
             <p class="text-center text-xl">{{ upgrade.name }}</p>
             <p class="text-center" :style="[main.totalPoints >= upgrade.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(upgrade.price, 0) }} points</p>
         </div>

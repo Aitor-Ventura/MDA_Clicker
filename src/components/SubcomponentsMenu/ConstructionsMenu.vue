@@ -2,21 +2,19 @@
   <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
 
   <div>
-    <div v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price
-          :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
+    <div class="constructionContainer"
+         v-for="item in main.constructions" :key="item.id" :id=item.id :name=item.name :price=item.price
+         :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
          @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)">
-      <div class="constructionContainer">
-        <img :src=item.srcImage width="110" height="110">
-        <p class="name">{{ item.name }}</p>
-        <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
-        <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
-        <ul>
-          <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 10)" :style="[main.totalPoints >= item.price * 10 ? 'color: green' : 'color: red']">x10</li>
-          <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 50)" :style="[main.totalPoints >= item.price * 50 ? 'color: green' : 'color: red']">x50</li>
-          <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 100)" :style="[main.totalPoints >= item.price * 100 ? 'color: green' : 'color: red']">x100</li>
-
-        </ul>
-      </div>
+      <img :src=item.srcImage width="110" height="110" loading="lazy">
+      <p class="name">{{ item.name }}</p>
+      <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
+      <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
+      <ul>
+        <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 10)" :style="[main.totalPoints >= item.price * 10 ? 'color: green' : 'color: red']">x10</li>
+        <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 50)" :style="[main.totalPoints >= item.price * 50 ? 'color: green' : 'color: red']">x50</li>
+        <li  class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 100)" :style="[main.totalPoints >= item.price * 100 ? 'color: green' : 'color: red']">x100</li>
+      </ul>
     </div>
   </div>
 </template>

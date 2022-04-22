@@ -1,9 +1,9 @@
 <template>
-  <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
+  <h1 class="text-4xl text-center mb-8 unselectable">That's right, come here and spend all your points, baby... 🤑</h1>
 
   <div>
     <div
-      class="constructionContainer card shadow-md shadow-neutral-900"
+      class="constructionContainer card shadow-md shadow-neutral-900 unselectable"
       v-for="item in main.constructions"
       :key="item.id"
       :id="item.id"
@@ -109,6 +109,8 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
+
+
 .constructionContainer
   width: auto
   display: flex

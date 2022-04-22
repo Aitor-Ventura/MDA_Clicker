@@ -12,7 +12,6 @@
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
 import SkinsMenu from "./SubcomponentsMenu/SkinsMenu.vue";
-
 </script>
 
 <script lang="ts">
@@ -42,7 +41,7 @@ export default {
         {
           name: "SkinsMenu",
           visible: false,
-          position: 2
+          position: 2,
         },
       ],
     };
@@ -50,7 +49,7 @@ export default {
   components: {
     ConstructionsMenu,
     UpgradesMenu,
-    SkinsMenu
+    SkinsMenu,
   },
   methods: {
     /**

@@ -20,7 +20,7 @@ import MainMenu from "../components/MainMenu.vue";
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap')
 
 body
-  //font-family: 'Merriweather', serif
-  font-family: Futura, Trebuchet MS, Arial, sans-serif
+  font-family: 'Merriweather', serif
+  //font-family: Futura, Trebuchet MS, Arial, sans-serif
   margin: 0
 </style>

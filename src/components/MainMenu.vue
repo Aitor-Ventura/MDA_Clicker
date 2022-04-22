@@ -10,6 +10,8 @@
 <script setup lang="ts">
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
+import SkinsMenu from "./SubcomponentsMenu/SkinsMenu.vue";
+
 </script>
 
 <script lang="ts">
@@ -36,12 +38,18 @@ export default {
           visible: false,
           position: 1,
         },
+        {
+          name: "SkinsMenu",
+          visible: false,
+          position: 2
+        },
       ],
     };
   },
   components: {
     ConstructionsMenu,
     UpgradesMenu,
+    SkinsMenu
   },
   methods: {
     /**

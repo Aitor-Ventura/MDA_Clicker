@@ -28,7 +28,6 @@
 <script setup lang="ts">
 import { useMainStore } from "../../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
-import { isTemplateNode } from "@vue/compiler-core";
 
 const main = useMainStore();
 
@@ -106,7 +105,7 @@ function details(basePointsPerSeconds: number, pointsPerSeconds: number, name: s
 </script>
 
 <script lang="ts">
-export default {};
+export default { };
 </script>
 
 <style lang="sass" scoped>

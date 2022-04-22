@@ -1,7 +1,8 @@
 <template>
   <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4 component">
     <component :is="component.name"></component>
-    <div class="w-full flex justify-end">
+    <div class="w-full flex justify-around">
+      <button class="mr-4 mb-4" @click="prevMenu(component.position)">Prev</button>
       <button class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
     </div>
   </div>
@@ -64,6 +65,15 @@ export default {
         // If the actual component is the last one in the array, then the next menu that should be
         // visible is the starter one
         this.components[0].visible = true;
+      }
+    },
+    prevMenu(pos: number): void {
+      this.components[pos].visible = false;
+
+      if (pos-- > 0) {
+        this.components[pos--].visible = true;
+      } else {
+        this.components[this.components.length - 1].visible = true;
       }
     },
   },

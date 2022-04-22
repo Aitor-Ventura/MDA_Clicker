@@ -10,7 +10,7 @@ const skins = [
         id: uuidv4(),
         srcImage: paperroll,
         minPoints: 0,
-        available: false,
+        available: true,
     },
     {
         id: uuidv4(),

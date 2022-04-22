@@ -4,7 +4,7 @@
              v-for="(skin, index) in main.skins" :key="index"
              @click="selectSkin(skin)">
              <img :src="skin.srcImage" width="175" loading="lazy">
-             <p class="text-center text-xl">{{ skin.minPoints }} paper rolls</p>
+             <p class="text-center text-xl" v-if="!skin.available">You need to achieve {{ skin.minPoints }} paper rolls</p>
         </div>
     </div>
 </template>

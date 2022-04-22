@@ -12,7 +12,7 @@ export const useMainStore = defineStore("main", {
         constructions: constructions,
         upgrades: upgrades,
         skins: skins,
-        actualSkin: "src/assets/constructionsImg/paperroll.png",
+        actualSkin: skins[0].srcImage,
         check1: false,
     }),
     getters: {
@@ -41,7 +41,6 @@ export const useMainStore = defineStore("main", {
             this.actualSkin = skin
         },
         getSkin() {
-            console.log(this.actualSkin)
             return this.actualSkin
         },
         // COOKIES //

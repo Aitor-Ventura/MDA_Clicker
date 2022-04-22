@@ -5,11 +5,11 @@
     <div
       class="constructionContainer"
       v-for="item in main.constructions"
-      :key="item.id"
-      :id="item.id"
-      :name="item.name"
-      :price="item.price"
-      :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
+        :key="item.id"
+        :id="item.id"
+        :name="item.name"
+        :price="item.price"
+        :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
       @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)"
     >
       <img :src="item.srcImage" width="110" height="110" loading="lazy" />

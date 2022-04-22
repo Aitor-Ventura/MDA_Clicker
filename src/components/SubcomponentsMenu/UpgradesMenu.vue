@@ -62,6 +62,7 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
-
+img, p
+  padding: 1em
 
 </style>

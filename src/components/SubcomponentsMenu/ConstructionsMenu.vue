@@ -1,32 +1,26 @@
 <template>
   <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
 
-  <div class="constructionButtonsContainer">
+  <div>
     <div
-<<<<<<< HEAD
-      class="constructionButton"
-=======
-      class="constructionContainer card shadow-md shadow-neutral-900 "
->>>>>>> 563af8c6aa2d8c13e3a364fb0d499b4a1a6308b5
+      class="constructionContainer card shadow-md shadow-neutral-900"
       v-for="item in main.constructions"
-        :key="item.id"
-        :id="item.id"
-        :name="item.name"
-        :price="item.price"
-        :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
+      :key="item.id"
+      :id="item.id"
+      :name="item.name"
+      :price="item.price"
+      :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
       @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)"
     >
-      <div class="constructionContainer">
-        <img :src="item.srcImage" width="110" height="110" loading="lazy" />
-        <p class="name">{{ item.name }}</p>
-        <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
-        <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
-        <ul>
-          <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 10)" :style="[main.totalPoints >= item.price * 10 ? 'color: green' : 'color: red']">x10</li>
-          <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 50)" :style="[main.totalPoints >= item.price * 50 ? 'color: green' : 'color: red']">x50</li>
-          <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 100)" :style="[main.totalPoints >= item.price * 100 ? 'color: green' : 'color: red']">x100</li>
-        </ul>
-      </div>
+      <img :src="item.srcImage" width="110" height="110" loading="lazy" />
+      <p class="name">{{ item.name }}</p>
+      <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
+      <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>
+      <ul>
+        <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 10)" :style="[main.totalPoints >= item.price * 10 ? 'color: green' : 'color: red']">x10</li>
+        <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 50)" :style="[main.totalPoints >= item.price * 50 ? 'color: green' : 'color: red']">x50</li>
+        <li class="howMany" @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 100)" :style="[main.totalPoints >= item.price * 100 ? 'color: green' : 'color: red']">x100</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -111,7 +105,7 @@ function details(basePointsPerSeconds: number, pointsPerSeconds: number, name: s
 </script>
 
 <script lang="ts">
-export default { };
+export default {};
 </script>
 
 <style lang="sass" scoped>
@@ -120,22 +114,12 @@ export default { };
   display: flex
   align-items: center
   justify-content: space-around
+  border: 2px solid black
+  border-radius: 8px
+  margin-bottom: 1em
+  margin-right: 1em
+  margin-left: 1em
   cursor: pointer
-  aspect-ratio: 650/200
-  height: 190px
-
-
-.constructionButton
-  background: url("../../assets/svg/ConstructionBlob1.png") // 900 x 2200
-  margin: 0.5em
-  background-repeat: no-repeat
-  background-size: contain
-  background-position: center
-
-.constructionButtonsContainer
-  display: flex
-  flex-direction: column
-  align-items: center
 
 .constructionContainer img
   padding: .5em
@@ -151,7 +135,7 @@ export default { };
 .price, .purchased
   font-size: 22px
   font-weight: bold
-  
+
 .howMany
   font-size: 22px
 </style>

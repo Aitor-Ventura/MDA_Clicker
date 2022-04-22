@@ -3,7 +3,7 @@
 
   <div>
     <div
-      class="constructionContainer"
+      class="constructionContainer card shadow-md shadow-neutral-900 "
       v-for="item in main.constructions"
         :key="item.id"
         :id="item.id"
@@ -126,13 +126,16 @@ export default { };
   width: 110px
   height: 110px
 
+.card
+  background-color: #222222
+
 .name
   font-size: 28px
 
 .price, .purchased
   font-size: 22px
   font-weight: bold
-
+  
 .howMany
   font-size: 22px
 </style>

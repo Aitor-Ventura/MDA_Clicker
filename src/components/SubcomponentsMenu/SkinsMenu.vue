@@ -1,6 +1,6 @@
 <template>
-    <div class="grid grid-cols-3 justify-items-center mb-8 gap-y-8">
-        <div class="cursor-pointer border-solid border-2 border-black rounded-lg"
+    <div class="grid grid-cols-3 justify-items-center mb-8 gap-y-8 gap-x-8 mr-8">
+        <div class="cursor-pointer border-solid border-2 border-black rounded-lg flex flex-col items-center justify-center w-full"
              v-for="(skin, index) in main.skins" :key="index"
              @click="selectSkin(skin)">
              <img :src="skin.srcImage" width="175" loading="lazy">

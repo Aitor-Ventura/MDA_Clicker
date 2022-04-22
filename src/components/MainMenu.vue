@@ -1,7 +1,8 @@
 <template>
   <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4 component">
     <component :is="component.name"></component>
-    <div class="w-full flex justify-end">
+    <div class="w-full flex justify-around mb-8">
+      <button class="mr-4 mb-4" @click="prevMenu(component.position)">Prev</button>
       <button class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
     </div>
   </div>
@@ -10,6 +11,8 @@
 <script setup lang="ts">
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
+import SkinsMenu from "./SubcomponentsMenu/SkinsMenu.vue";
+
 </script>
 
 <script lang="ts">
@@ -36,12 +39,18 @@ export default {
           visible: false,
           position: 1,
         },
+        {
+          name: "SkinsMenu",
+          visible: false,
+          position: 2
+        },
       ],
     };
   },
   components: {
     ConstructionsMenu,
     UpgradesMenu,
+    SkinsMenu
   },
   methods: {
     /**
@@ -56,6 +65,15 @@ export default {
         // If the actual component is the last one in the array, then the next menu that should be
         // visible is the starter one
         this.components[0].visible = true;
+      }
+    },
+    prevMenu(pos: number): void {
+      this.components[pos].visible = false;
+
+      if (pos-- > 0) {
+        this.components[pos--].visible = true;
+      } else {
+        this.components[this.components.length - 1].visible = true;
       }
     },
   },

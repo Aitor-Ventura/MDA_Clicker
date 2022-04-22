@@ -3,13 +3,17 @@
 
   <div class="constructionButtonsContainer">
     <div
+<<<<<<< HEAD
       class="constructionButton"
+=======
+      class="constructionContainer card shadow-md shadow-neutral-900 "
+>>>>>>> 563af8c6aa2d8c13e3a364fb0d499b4a1a6308b5
       v-for="item in main.constructions"
-      :key="item.id"
-      :id="item.id"
-      :name="item.name"
-      :price="item.price"
-      :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
+        :key="item.id"
+        :id="item.id"
+        :name="item.name"
+        :price="item.price"
+        :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
       @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)"
     >
       <div class="constructionContainer">
@@ -30,7 +34,6 @@
 <script setup lang="ts">
 import { useMainStore } from "../../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
-import { isTemplateNode } from "@vue/compiler-core";
 
 const main = useMainStore();
 
@@ -108,7 +111,7 @@ function details(basePointsPerSeconds: number, pointsPerSeconds: number, name: s
 </script>
 
 <script lang="ts">
-export default {};
+export default { };
 </script>
 
 <style lang="sass" scoped>
@@ -139,13 +142,16 @@ export default {};
   width: 110px
   height: 110px
 
+.card
+  background-color: #222222
+
 .name
   font-size: 28px
 
 .price, .purchased
   font-size: 22px
   font-weight: bold
-
+  
 .howMany
   font-size: 22px
 </style>

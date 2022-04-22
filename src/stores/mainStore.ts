@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import constructions from "@/assets/constructions"
 import upgrades from "@/assets/upgrades"
+import skins from "@/assets/skins"
 
 export const useMainStore = defineStore("main", {
     state: () => ({
@@ -10,7 +11,9 @@ export const useMainStore = defineStore("main", {
         interval: setInterval(() => { }, 1000),
         constructions: constructions,
         upgrades: upgrades,
-        check1: false
+        skins: skins,
+        actualSkin: skins[0].srcImage,
+        check1: false,
     }),
     getters: {
         doubleTotalPoints: state => {
@@ -34,6 +37,13 @@ export const useMainStore = defineStore("main", {
             }
             
         },
+        setSkin(skin: string) {
+            this.actualSkin = skin
+        },
+        getSkin() {
+            return this.actualSkin
+        },
+        // COOKIES //
         getCookie(cname: String) {
             let name = cname + "=";
             let ca = document.cookie.split(';');

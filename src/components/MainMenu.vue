@@ -1,9 +1,11 @@
 <template>
   <div v-for="(component, index) in visibleComponent" :key="index" class="h-screen pt-4 component">
-    <component :is="component.name"></component>
-    <div class="w-full flex justify-around mb-8">
-      <button class="mr-4 mb-4" @click="prevMenu(component.position)">Prev</button>
-      <button class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
+    <div class="main">
+      <div class="componentsContainer">
+        <component :is="component.name"></component>
+      </div>
+      <button id="prevButton" class="mr-4 mb-4" @click="prevMenu(component.position)">Prev</button>
+      <button id="nextButton" class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
     </div>
   </div>
 </template>
@@ -80,11 +82,68 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-div
+
+
+*
   background: #333333
   color: lightgrey
+
+#prevButton
+  -webkit-order: 1
+  -ms-flex-order: 1
+  order: 1
+  -webkit-flex: 0 1 auto
+  -ms-flex: 0 1 auto
+  flex: 0 1 auto
+  -webkit-align-self: center
+  -ms-flex-item-align: center
+  align-self: center
+
+#nextButton
+  -webkit-order: 3
+  -ms-flex-order: 3
+  order: 3
+  -webkit-flex: 0 1 auto
+  -ms-flex: 0 1 auto
+  flex: 0 1 auto
+  -webkit-align-self: center
+  -ms-flex-item-align: center
+  align-self: center
+
+.componentsContainer
+  width: 80%
+  -webkit-order: 2
+  -ms-flex-order: 2
+  order: 2
+  -webkit-align-self: center
+  -ms-flex-item-align: center
+  align-self: center
+
+
+.main
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+  -webkit-flex-direction: row
+  -ms-flex-direction: row
+  flex-direction: row
+  -webkit-flex-wrap: nowrap
+  -ms-flex-wrap: nowrap
+  flex-wrap: nowrap
+  -webkit-justify-content: center
+  -ms-flex-pack: center
+  justify-content: center
+  -webkit-align-content: stretch
+  -ms-flex-line-pack: stretch
+  align-content: stretch
+  -webkit-align-items: flex-start
+  -ms-flex-align: start
+  align-items: flex-start
+
 .component
   overflow-y: scroll
+  align-self: center
+  order: 2
 
 button
   display: inline-block

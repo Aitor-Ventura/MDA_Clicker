@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-4xl text-center mb-8 unselectable">That's right, come here and spend all your points, baby... 🤑</h1>
 
-  <div>
+  <div class="constructionCardsContainer">
     <div
       class="constructionContainer card shadow-md shadow-neutral-900 unselectable"
       v-for="item in main.constructions"
@@ -110,6 +110,12 @@ export default {};
 
 <style lang="sass" scoped>
 
+.constructionCardsContainer
+  display: flex
+  align-items: center
+  flex-direction: column
+
+
 
 .constructionContainer
   width: auto
@@ -119,9 +125,8 @@ export default {};
   border: 2px solid black
   border-radius: 8px
   margin-bottom: 1em
-  margin-right: 1em
-  margin-left: 1em
   cursor: pointer
+  width: 70%
 
 .constructionContainer img
   padding: .5em

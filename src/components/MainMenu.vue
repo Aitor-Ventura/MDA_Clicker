@@ -4,8 +4,20 @@
       <div class="componentsContainer">
         <component :is="component.name"></component>
       </div>
-      <button id="prevButton" class="mr-4 mb-4" @click="prevMenu(component.position)">Prev</button>
-      <button id="nextButton" class="mr-4 mb-4" @click="nextMenu(component.position)">Next</button>
+      <button id="prevButton" class="mr-4 mb-4" @click="prevMenu(component.position)">
+        <!-- 76px1 Caret Left-->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-left" width="76" height="76" viewBox="0 0 24 24" stroke-width="1" stroke="#d3d3d3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 15l-6 -6l-6 6h12" transform="rotate(270 12 12)" />
+        </svg>
+      </button>
+      <button id="nextButton" class="mr-4 mb-4" @click="nextMenu(component.position)">
+        <!-- 76px1 Caret Right-->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-right" width="76" height="76" viewBox="0 0 24 24" stroke-width="1" stroke="#d3d3d3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 15l-6 -6l-6 6h12" transform="rotate(90 12 12)" />
+        </svg>
+      </button>
     </div>
   </div>
 </template>
@@ -86,7 +98,7 @@ export default {
 
 div
   background: #333333
-  color: lightgrey
+  color: #d3d3d3
 
 
 #prevButton
@@ -111,17 +123,16 @@ div
   -ms-flex-item-align: center
   align-self: center
 
+
 .componentsContainer
   width: 90%
   -webkit-order: 2
   -ms-flex-order: 2
   order: 2
-  -webkit-align-self: center
-  -ms-flex-item-align: center
-  align-self: center
 
 
 .main
+  height: 100vh
   display: -ms-flexbox
   display: -webkit-flex
   display: flex
@@ -146,25 +157,28 @@ div
   align-self: center
   order: 2
 
-button
-  display: inline-block
-  padding: 15px 25px
-  font-size: 24px
-  cursor: pointer
-  text-align: center
-  text-decoration: none
-  outline: none
-  color: #fff
-  background-color: #4CAF50
-  border: none
-  border-radius: 15px
-  box-shadow: 0 9px #999
 
-button:hover
-  background-color: #3e8e41
 
-button:active
-  background-color: #3e8e41
-  box-shadow: 0 5px #666
-  transform: translateY(4px)
+//button
+//  display: inline-block
+//  padding: 15px 25px
+//  font-size: 24px
+//  cursor: pointer
+//  text-align: center
+//  text-decoration: none
+//  outline: none
+//  color: #fff
+//  background-color: #4CAF50
+//  border: none
+//  border-radius: 15px
+//  box-shadow: 0 9px #999
+
+//button:hover
+//  background-color: #3e8e41
+
+
+//button:active
+//  background-color: #3e8e41
+//  box-shadow: 0 5px #666
+//  transform: translateY(4px)
 </style>

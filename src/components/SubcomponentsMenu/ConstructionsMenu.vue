@@ -1,9 +1,9 @@
 <template>
-  <h1 class="text-4xl text-center mb-8 unselectable">That's right, come here and spend all your points, baby... 🤑</h1>
+  <h1 class="text-4xl text-center mb-8">That's right, come here and spend all your points, baby... 🤑</h1>
 
   <div class="constructionCardsContainer">
     <div
-      class="constructionContainer card shadow-md shadow-neutral-900 unselectable"
+      class="constructionContainer card shadow-md shadow-neutral-900"
       v-for="item in main.constructions"
       :key="item.id"
       :id="item.id"
@@ -12,6 +12,7 @@
       :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
       @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)"
     >
+      <span></span>
       <img :src="item.srcImage" width="110" height="110" loading="lazy" />
       <p class="name">{{ item.name }}</p>
       <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
@@ -115,8 +116,6 @@ export default {};
   align-items: center
   flex-direction: column
 
-
-
 .constructionContainer
   width: auto
   display: flex
@@ -135,6 +134,8 @@ export default {};
 
 .card
   background-color: #222222
+  &:hover
+    animation: colorPulse 3s infinite
 
 .name
   font-size: 28px
@@ -145,4 +146,14 @@ export default {};
 
 .howMany
   font-size: 22px
+
+@keyframes colorPulse
+  0%
+    background-color: #222222
+
+  50%
+    background-color: #2A2A2A
+
+  100%
+    background-color: #222222
 </style>

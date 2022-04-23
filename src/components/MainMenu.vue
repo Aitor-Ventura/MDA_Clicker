@@ -84,9 +84,10 @@ export default {
 <style lang="sass" scoped>
 
 
-*
+div
   background: #333333
   color: lightgrey
+
 
 #prevButton
   -webkit-order: 1
@@ -111,7 +112,7 @@ export default {
   align-self: center
 
 .componentsContainer
-  width: 80%
+  width: 90%
   -webkit-order: 2
   -ms-flex-order: 2
   order: 2

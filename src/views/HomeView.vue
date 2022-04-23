@@ -4,7 +4,7 @@
       <PaperrollDisplay></PaperrollDisplay>
     </div>
 
-    <div class="w-2/3">
+    <div class="w-2/3 menu">
       <MainMenu></MainMenu>
     </div>
   </main>

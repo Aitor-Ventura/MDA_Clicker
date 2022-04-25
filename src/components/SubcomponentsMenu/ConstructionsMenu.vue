@@ -98,7 +98,7 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number, how
 }
 
 /**
- * Function that allow the user to see the points per seconds that generate any construction while hovering it
+ * Function that allow the user to see the points per seconds that generate any upgrade while hovering it
  */
 function details(basePointsPerSeconds: number, pointsPerSeconds: number, name: string, purchased: number) {
   return "Each " + name + " produces " + basePointsPerSeconds + " paper rolls per seconds\n" + "With your " + purchased + " " + name + " bought, they produced " + pointsPerSeconds * purchased + " paper rolls per seconds";

@@ -49,14 +49,15 @@ function buyUpgrade(id: string, type: string, price: number, purchased: boolean,
           break;
       }
       main.totalPoints -= price;
-      document.cookie = "pointsPerSecond=" + main.pointsPerSecond;
-      main.addPointsPerSecond();
 
       for (let i = 0; i < main.upgrades.length; i++) {
         if (main.upgrades[i].id == id) {
           main.upgrades[i].purchased = true;
         }
       }
+      
+      main.addPointsPerSecond()
+      main.storeCookie("pointsPerSecond")
     }
   });
 }

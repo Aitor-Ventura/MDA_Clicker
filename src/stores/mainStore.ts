@@ -26,14 +26,12 @@ export const useMainStore = defineStore("main", {
             this.totalPoints += this.pointsPerClick;
         },
         addPointsPerSecond() {
-            if(this.checkCookie("pointsPerSecond")) {
-                this.pointsPerSecond = parseInt(this.getCookie("pointsPerSecond"))
-            }
+            
             clearInterval(this.interval)
             if(this.pointsPerSecond < 13){
-                this.interval = setInterval(() => {this.totalPoints += 1}, (1/this.pointsPerSecond)*1000)
+                this.interval = setInterval(() => {this.totalPoints += 1; this.storeCookie("totalPoints")}, (1/this.pointsPerSecond)*1000)
             } else {
-                this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16}, 62.5)
+                this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16; this.storeCookie("totalPoints")}, 62.5)
             }
             
         },
@@ -44,6 +42,7 @@ export const useMainStore = defineStore("main", {
             return this.actualSkin
         },
         // COOKIES //
+
         getCookie(cname: String) {
             let name = cname + "=";
             let ca = document.cookie.split(';');
@@ -58,12 +57,43 @@ export const useMainStore = defineStore("main", {
             }
             return "";
         },
+        assignCookies() {
+            if(this.checkCookie("totalPoints") && this.checkCookie("pointsPerSecond")) {
+                this.totalPoints = parseInt(this.getCookie("totalPoints"))
+                this.pointsPerSecond = parseInt(this.getCookie("pointsPerSecond"))
+                this.constructions.forEach(construction => {
+                    construction.pointsPerSeconds = parseInt(this.getCookie(construction.name + "PointsPerSecond"))
+                    construction.purchased = parseInt(this.getCookie(construction.name + "Purchased"))
+                    construction.price = parseInt(this.getCookie(construction.name + "Price"))
+                });
+                this.upgrades.forEach(upgrade =>{
+                    upgrade.purchased =  this.getCookie(upgrade.name + "Purchased") === 'true'
+                })
+            }
+        },
+        storeCookie(cname: String) {
+            switch (cname) {
+                case "totalPoints": 
+                    document.cookie = cname + "=" + this.totalPoints;
+                    break;
+                case "pointsPerSecond":
+                    document.cookie = cname + "=" + this.pointsPerSecond;
+                    this.constructions.forEach(construction => {
+                        document.cookie = construction.name + "PointsPerSecond=" + construction.pointsPerSeconds
+                        document.cookie = construction.name + "Purchased=" + construction.purchased
+                        document.cookie = construction.name + "Price=" + construction.price
+                    });
+                    this.upgrades.forEach(upgrade =>{
+                        document.cookie = upgrade.name + "Purchased=" + upgrade.purchased
+                    })
+                    break;
+            }
+        },
         checkCookie(cname: String) {
             if(this.getCookie(cname) != "") {
                 return true
-            } else {
-                return false
             }
+            return false
         },
     }
 })

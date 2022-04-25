@@ -92,8 +92,8 @@ function buyConstruction(id: string, price: number, pointsPerSecond: number, how
         }
         break;
     }
-    document.cookie = "pointsPerSecond=" + main.pointsPerSecond;
-    main.addPointsPerSecond();
+    main.addPointsPerSecond()
+    main.storeCookie("pointsPerSecond")
   });
 }
 

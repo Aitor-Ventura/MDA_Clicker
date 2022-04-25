@@ -19,13 +19,8 @@ import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
-if (main.checkCookie("totalPoints")) {
-  main.totalPoints = parseInt(main.getCookie("totalPoints"));
-}
+main.assignCookies()
 main.addPointsPerSecond();
-setInterval(() => {
-  document.cookie = "totalPoints=" + main.totalPoints;
-}, 1000);
 
 let paperrollStyle = reactive({ width: "max-width: 175px" }); //reactive({ width: "max-width: 175px" });
 let paperrollWidth = computed(() => {

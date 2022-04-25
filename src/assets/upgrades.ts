@@ -21,7 +21,7 @@ const upgrades = [
     id: uuidv4(),
     name: "Paper",
     type: "Basic",
-    price: 15000,
+    price: 15,
     pointsPerSeconds: 100,
     purchased: false,
     srcImage: paper,

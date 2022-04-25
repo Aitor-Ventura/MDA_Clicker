@@ -10,7 +10,8 @@
       :id="upgrade.id"
       :name="upgrade.name"
       :price="upgrade.price"
-      :style="[upgrade.purchased == true ? 'opacity: 0.7' : 'opacity: 1']"
+      :style="[upgrade.purchased == true ? 'opacity: 0.4' : 'opacity: 1']"
+      :title="details(upgrade.name, upgrade.pointsPerSeconds, upgrade.type)" 
     >
       <img :src="upgrade.srcImage" width="175" loading="lazy" />
       <p class="text-center text-xl">{{ upgrade.name }}</p>
@@ -24,7 +25,6 @@ import { useMainStore } from "../../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
-
 /**
  * Function that allow the user to buy upgrades. Then, the points per seconds are increased.
  */
@@ -60,6 +60,11 @@ function buyUpgrade(id: string, type: string, price: number, purchased: boolean,
       main.storeCookie("pointsPerSecond")
     }
   });
+}
+
+function details(name: string, pointsPerSecond: number, type: string) {
+  return name + " will increase the points per seconds obtained by " + type + " by " + pointsPerSecond
+
 }
 </script>
 

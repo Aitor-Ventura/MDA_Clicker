@@ -62,6 +62,10 @@ function buyUpgrade(id: string, type: string, price: number, purchased: boolean,
   });
 }
 
+/**
+ * Function that allow the user to see the details of any upgrade while hovering it
+ */
+
 function details(name: string, pointsPerSecond: number, type: string) {
   return name + " will increase the points per seconds obtained by " + type + " by " + pointsPerSecond
 

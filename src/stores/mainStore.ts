@@ -26,14 +26,18 @@ export const useMainStore = defineStore("main", {
             this.totalPoints += this.pointsPerClick;
         },
         addPointsPerSecond() {
-            
             clearInterval(this.interval)
             if(this.pointsPerSecond < 13){
                 this.interval = setInterval(() => {this.totalPoints += 1; this.storeCookie("totalPoints")}, (1/this.pointsPerSecond)*1000)
             } else {
-                this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16; this.storeCookie("totalPoints")}, 62.5)
+                this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16; this.storeCookie("totalPoints");
+                    this.skins.forEach(skin => {
+                        if (this.totalPoints >= skin.minPoints) {
+                            skin.available = true
+                        }
+                    })
+                }, 62.5)
             }
-            
         },
         setSkin(skin: string) {
             this.actualSkin = skin
@@ -58,8 +62,10 @@ export const useMainStore = defineStore("main", {
             return "";
         },
         assignCookies() {
-            if(this.checkCookie("totalPoints") && this.checkCookie("pointsPerSecond")) {
+            if(this.checkCookie("totalPoints")) {
                 this.totalPoints = parseInt(this.getCookie("totalPoints"))
+            }
+            if (this.checkCookie("pointsPerSecond")) {
                 this.pointsPerSecond = parseInt(this.getCookie("pointsPerSecond"))
                 this.constructions.forEach(construction => {
                     construction.pointsPerSeconds = parseInt(this.getCookie(construction.name + "PointsPerSecond"))
@@ -68,7 +74,10 @@ export const useMainStore = defineStore("main", {
                 });
                 this.upgrades.forEach(upgrade =>{
                     upgrade.purchased =  this.getCookie(upgrade.name + "Purchased") === 'true'
-                })
+                });
+            }
+            if(this.checkCookie("skins")) {
+                this.actualSkin = this.getCookie("skins")
             }
         },
         storeCookie(cname: String) {
@@ -86,6 +95,9 @@ export const useMainStore = defineStore("main", {
                     this.upgrades.forEach(upgrade =>{
                         document.cookie = upgrade.name + "Purchased=" + upgrade.purchased
                     })
+                    break;
+                case "skins":
+                    document.cookie = "skins=" + this.actualSkin;
                     break;
             }
         },

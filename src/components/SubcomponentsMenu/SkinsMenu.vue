@@ -17,6 +17,7 @@ function selectSkin(skin: any) {
       if (skin.id == main.skins[i].id) {
         skin.available = true;
         main.setSkin(skin.srcImage);
+        main.storeCookie("skins")
       }
     }
   }

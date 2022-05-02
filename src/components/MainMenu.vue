@@ -26,6 +26,7 @@
 import ConstructionsMenu from "./SubcomponentsMenu/ConstructionsMenu.vue";
 import UpgradesMenu from "./SubcomponentsMenu/UpgradesMenu.vue";
 import SkinsMenu from "./SubcomponentsMenu/SkinsMenu.vue";
+import AchievementMenu from "./SubcomponentsMenu/AchievementMenu.vue";
 </script>
 
 <script lang="ts">
@@ -57,6 +58,11 @@ export default {
           visible: false,
           position: 2,
         },
+        {
+          name: "AchievementMenu",
+          visible: false,
+          position: 3,
+        }
       ],
     };
   },
@@ -64,6 +70,7 @@ export default {
     ConstructionsMenu,
     UpgradesMenu,
     SkinsMenu,
+    AchievementMenu,
   },
   methods: {
     /**

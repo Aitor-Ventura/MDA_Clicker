@@ -120,7 +120,7 @@ const upgrades = [
     id: uuidv4(),
     name: "Pedro Sánchez's Rocket",
     type: "Rocket",
-    price: 999999,
+    price: 1000000,
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: pedrocket,

@@ -11,9 +11,10 @@
       :price="item.price"
       :title="details(item.basePointsPerSeconds, item.pointsPerSeconds, item.name, item.purchased)"
       @click="buyConstruction(item.id, item.price, item.pointsPerSeconds, 1)"
+      v-show="main.maxTotalPoints>=item.price-item.price*0.2 || item.purchased>0"
     >
       <span></span>
-      <img :src="item.srcImage" width="110" height="110" loading="lazy" />
+      <img :src="item.srcImage" width="110" height="110"  :style="[main.totalPoints>=item.price-item.price*0.2 ? 'opacity: 1' : 'opacity: 1']" loading="lazy" /> <!-- MIRAR -->
       <p class="name">{{ item.name }}</p>
       <p class="price" :style="[main.totalPoints >= item.price ? 'color: green' : 'color: red']">{{ abbreviateNumber(item.price, 2) }}</p>
       <p class="purchased">{{ abbreviateNumber(item.purchased, 2) }}</p>

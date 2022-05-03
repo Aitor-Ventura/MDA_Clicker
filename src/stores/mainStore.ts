@@ -13,7 +13,7 @@ export const useMainStore = defineStore("main", {
         upgrades: upgrades,
         skins: skins,
         actualSkin: skins[0].srcImage,
-        check1: false,
+        maxTotalPoints: 0,
     }),
     getters: {
         doubleTotalPoints: state => {
@@ -28,9 +28,20 @@ export const useMainStore = defineStore("main", {
         addPointsPerSecond() {
             clearInterval(this.interval)
             if(this.pointsPerSecond < 13){
-                this.interval = setInterval(() => {this.totalPoints += 1; this.storeCookie("totalPoints")}, (1/this.pointsPerSecond)*1000)
+                this.interval = setInterval(() => {
+                    this.totalPoints += 1;
+                    this.storeCookie("totalPoints");
+                    if(this.maxTotalPoints < this.totalPoints) {
+                        this.maxTotalPoints = this.totalPoints
+                    }
+                }, (1/this.pointsPerSecond)*1000)
             } else {
-                this.interval = setInterval(() => {this.totalPoints += this.pointsPerSecond/16; this.storeCookie("totalPoints");
+                this.interval = setInterval(() => {
+                    this.totalPoints += this.pointsPerSecond/16;
+                    this.storeCookie("totalPoints");
+                    if(this.maxTotalPoints < this.totalPoints) {
+                        this.maxTotalPoints = this.totalPoints
+                    }
                     this.skins.forEach(skin => {
                         if (this.totalPoints >= skin.minPoints) {
                             skin.available = true
@@ -64,6 +75,7 @@ export const useMainStore = defineStore("main", {
         assignCookies() {
             if(this.checkCookie("totalPoints")) {
                 this.totalPoints = parseInt(this.getCookie("totalPoints"))
+                this.maxTotalPoints = parseInt(this.getCookie("maxTotalPoints"))
             }
             if (this.checkCookie("pointsPerSecond")) {
                 this.pointsPerSecond = parseInt(this.getCookie("pointsPerSecond"))
@@ -84,6 +96,7 @@ export const useMainStore = defineStore("main", {
             switch (cname) {
                 case "totalPoints": 
                     document.cookie = cname + "=" + this.totalPoints;
+                    document.cookie = "maxTotalPoints=" + this.maxTotalPoints;
                     break;
                 case "pointsPerSecond":
                     document.cookie = cname + "=" + this.pointsPerSecond;

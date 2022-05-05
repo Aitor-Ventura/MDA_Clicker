@@ -1,11 +1,13 @@
 <template>
     <div class="grid grid-cols-3 justify-items-center mb-8 gap-y-8 gap-x-8 mr-8">
-        <div class="card shadow-md shadow-neutral-900 cursor-pointer border-solid border-2 border-black rounded-lg flex flex-col items-center justify-center w-full"
+        <div class="card shadow-md shadow-neutral-900 border-solid border-2 border-black rounded-lg flex flex-col items-center justify-center w-full"
              v-for="(achievement, index) in main.achievements" :key="index"
-             v-show="achievement.achieved" 
+             :class="[achievement.achieved == true ? 'shadow-yellow-900 border-yellow-900 golden textAchieved' : 'shadow-red-900 border-red-900 crimson']"
              >
             <!-- <img :src="achievement.srcImage" width="175" loading="lazy" />  DESDE QUE SE TENGA ASSETS DESCOMENTAR LÍNEA -->
             <p class="text-center text-xl">{{ achievement.name }}</p>
+            <p class="text-center">{{ achievement.description }}</p>
+            
         </div>
 
     </div>
@@ -19,7 +21,7 @@ const main = useMainStore();
 
 unlockAchievement()
 
-function unlockAchievement() { // NUNCA LLAMAR A ESTA FUNCIÓN PORQUE PETA XD
+function unlockAchievement() {
     achievements.forEach(achievement => {
         switch (achievement.name) {
             case "100 papers":
@@ -121,5 +123,19 @@ export default { };
 </script>
 
 <style lang="sass" scoped>
+.card
+  background-color: #222222
+
+.golden
+  background-color: #ffd700
+
+.crimson
+  background-color: #dc143c
+
+.textAchieved
+  color: black
+
+img, p
+  padding: 1em
 
 </style>

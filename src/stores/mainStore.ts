@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 import constructions from "@/assets/constructions"
 import upgrades from "@/assets/upgrades"
 import skins from "@/assets/skins"
+import achievements from "@/assets/achievements"
 
 export const useMainStore = defineStore("main", {
     state: () => ({
@@ -12,6 +13,7 @@ export const useMainStore = defineStore("main", {
         constructions: constructions,
         upgrades: upgrades,
         skins: skins,
+        achievements: achievements,
         actualSkin: skins[0].srcImage,
         maxTotalPoints: 0,
     }),

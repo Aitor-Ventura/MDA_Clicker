@@ -33,26 +33,26 @@ const achievements = [
     },
     {
         id: uuidv4(),
-        name: "1k lumberjack",
-        description: "You have bought 1k lumberjacks!",
+        name: "100 lumberjack",
+        description: "You have bought 100 lumberjacks!",
         achieved: false,
     },
     {
         id: uuidv4(),
-        name: "1k shop",
-        description: "You have bought 1k shops!",
+        name: "100 shop",
+        description: "You have bought 100 shops!",
         achieved: false,
     },
     {
         id: uuidv4(),
-        name: "1k factory",
-        description: "You have bought 1k factories!",
+        name: "100 factory",
+        description: "You have bought 100 factories!",
         achieved: false,
     },
     {
         id: uuidv4(),
-        name: "1k rocket",
-        description: "You have bought 1k rockets!",
+        name: "100 rocket",
+        description: "You have bought 100 rockets!",
         achieved: false,
     },
     {
@@ -67,4 +67,6 @@ const achievements = [
         description: "You have bought all constructions!",
         achieved: false,
     },
-]
+];
+
+export default achievements;

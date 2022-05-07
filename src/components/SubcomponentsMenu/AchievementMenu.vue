@@ -1,12 +1,15 @@
 <template>
+    <h1 class="text-4xl text-center mb-8">Trophy room 🏆</h1>
+
     <div class="grid grid-cols-3 justify-items-center mb-8 gap-y-8 gap-x-8 mr-8">
         <div class="card shadow-md shadow-neutral-900 border-solid border-2 border-black rounded-lg flex flex-col items-center justify-center w-full"
              v-for="(achievement, index) in main.achievements" :key="index"
              :class="[achievement.achieved == true ? 'shadow-yellow-900 border-yellow-900 golden textAchieved' : 'shadow-red-900 border-red-900 crimson']"
              >
             <!-- <img :src="achievement.srcImage" width="175" loading="lazy" />  DESDE QUE SE TENGA ASSETS DESCOMENTAR LÍNEA -->
-            <p class="text-center text-xl">{{ achievement.name }}</p>
-            <p class="text-center">{{ achievement.description }}</p>
+            <p class="text-center text-2xl">{{ achievement.name }}</p>
+            <p class="text-center text italic" v-show="!achievement.achieved">You need to get {{ achievement.name }} </p> <!-- If the achievement is not achieved this description will be shown -->
+            <p class="text-center" v-show="achievement.achieved">{{ achievement.description }}</p> <!-- If the achievement is achieved this description will be shown -->
             
         </div>
 
@@ -48,7 +51,7 @@ function unlockAchievement() {
                 }
                 break;
 
-            case "100 papers":
+            case "1m papers":
                 if (main.maxTotalPoints >= 1000000 && achievement.achieved == false) {
                     achievement.achieved = true
                 }
@@ -110,12 +113,9 @@ function unlockAchievement() {
         
             default:
                 break;
-        }
-        
-    });
-        
+        } 
+    });        
 }
-
 </script>
 
 <script lang="ts">

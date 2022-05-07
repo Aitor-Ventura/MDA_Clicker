@@ -6,7 +6,7 @@ import rocket from "./constructionsImg/rocket.png";
 import van from "./constructionsImg/van.png";
 import shoppingcenter from "./constructionsImg/shoppingcenter.png";
 import themepark from "./constructionsImg/themepark.png";
-import ufo from "./constructionsImg/ufo.png";
+import ufo from "./constructionsImg/UFO.png";
 
 const constructions = [
   {

@@ -3,6 +3,10 @@ import lumberjack1 from "./constructionsImg/lumberjack1.png";
 import shop from "./constructionsImg/shop.png";
 import factory from "./constructionsImg/factory.png";
 import rocket from "./constructionsImg/rocket.png";
+import van from "./constructionsImg/van.png";
+import shoppingcenter from "./constructionsImg/shoppingcenter.png";
+import themepark from "./constructionsImg/themepark.png";
+import ufo from "./constructionsImg/ufo.png";
 
 const constructions = [
   {
@@ -33,7 +37,7 @@ const constructions = [
     pointsPerSeconds: 35,
     basePointsPerSeconds: 35,
     purchased: 0,
-    srcImage: rocket,
+    srcImage: van,
   },
   {
     id: uuidv4(),
@@ -43,7 +47,7 @@ const constructions = [
     pointsPerSeconds: 70,
     basePointsPerSeconds: 70,
     purchased: 0,
-    srcImage: rocket,
+    srcImage: shoppingcenter,
   },
   {
     id: uuidv4(),
@@ -53,7 +57,7 @@ const constructions = [
     pointsPerSeconds: 150,
     basePointsPerSeconds: 150,
     purchased: 0,
-    srcImage: rocket,
+    srcImage: themepark,
   },
   {
     id: uuidv4(),
@@ -83,7 +87,7 @@ const constructions = [
     pointsPerSeconds: 900,
     basePointsPerSeconds: 900,
     purchased: 0,
-    srcImage: rocket,
+    srcImage: ufo,
   },
   
 ];

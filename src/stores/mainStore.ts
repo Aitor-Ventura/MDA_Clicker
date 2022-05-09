@@ -7,7 +7,7 @@ import achievements from "@/assets/achievements"
 export const useMainStore = defineStore("main", {
     state: () => ({
         totalPoints: 0,
-        name: "MDA Pepe's bathroom",
+        name: "MDA Pepe",
         pointsPerSecond: 1,
         pointsPerClick: 1,
         interval: setInterval(() => { }, 1000),

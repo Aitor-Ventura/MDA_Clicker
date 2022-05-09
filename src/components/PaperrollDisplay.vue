@@ -1,11 +1,9 @@
 <template>
   <div>
-    <input v-model="main.name" @change="saveName()" class="w-min">'s Bathroom
-  </div>
-  <div>
     <div class="sm:background-gris background-crema-peaks"></div>
+    <input v-model="main.name" @change="saveName()" class="transparent mt-12 text-right w-3/12 ml-20 text-xl"><span class="text-xl">'s Bathroom</span>
     <div class="main select-none">
-      <div class="text-display mt-12 mr-11 ml-11">
+      <div class="text-display mt-12 mr-11 ml-11 rounded-lg">
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
@@ -59,6 +57,9 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
+
+.transparent
+  background-color: rgba(0, 0, 0, 0)
 
 .main
   height: 100%

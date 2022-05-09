@@ -1,5 +1,8 @@
 <template>
   <div>
+    <input v-model="main.name" @change="saveName()" class="w-min">'s Bathroom
+  </div>
+  <div>
     <div class="sm:background-gris background-crema-peaks"></div>
     <div class="main select-none">
       <div class="text-display mt-12 mr-11 ml-11">
@@ -21,6 +24,10 @@ const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
 main.assignCookies()
 main.addPointsPerSecond();
+
+function saveName() {
+  main.storeCookie("name")
+}
 
 let paperrollStyle = reactive({ width: "max-width: 175px" }); //reactive({ width: "max-width: 175px" });
 let paperrollWidth = computed(() => {
@@ -119,7 +126,6 @@ export default {};
   cursor: pointer
   animation: float 6s ease-in-out infinite
   transition: max-width 0.05s
-
 
 @keyframes infinite-down
   0%

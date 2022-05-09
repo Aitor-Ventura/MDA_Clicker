@@ -7,6 +7,7 @@ import achievements from "@/assets/achievements"
 export const useMainStore = defineStore("main", {
     state: () => ({
         totalPoints: 0,
+        name: "MDA Pepe's bathroom",
         pointsPerSecond: 1,
         pointsPerClick: 1,
         interval: setInterval(() => { }, 1000),
@@ -93,6 +94,9 @@ export const useMainStore = defineStore("main", {
             if(this.checkCookie("skins")) {
                 this.actualSkin = this.getCookie("skins")
             }
+            if(this.checkCookie("name")) {
+                this.name = this.getCookie("name")
+            }
         },
         storeCookie(cname: String) {
             switch (cname) {
@@ -113,6 +117,9 @@ export const useMainStore = defineStore("main", {
                     break;
                 case "skins":
                     document.cookie = "skins=" + this.actualSkin;
+                    break;
+                case "name":
+                    document.cookie = "name=" + this.name;
                     break;
             }
         },

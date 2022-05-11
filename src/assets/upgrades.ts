@@ -15,6 +15,22 @@ import rocket_paper from "./upgradesImg/rocket_paper.png"
 import rocket_poo from "./upgradesImg/rocket_poo.png"
 import pedrocket from "./upgradesImg/pedrocket.png"
 
+import van1 from "./upgradesImg/van1.png"
+import van2 from "./upgradesImg/van2.png"
+import van3 from "./upgradesImg/van3.png"
+
+import themepark1 from "./upgradesImg/themepàrk1.png"
+import themepark2 from "./upgradesImg/themepàrk2.png"
+import themepark3 from "./upgradesImg/themepàrk3.png"
+
+import factory1 from "./upgradesImg/factory1.png"
+import factory2 from "./upgradesImg/factory2.png"
+import factory3 from "./upgradesImg/factory3.png"
+
+import ufo1 from "./upgradesImg/ufo1.png"
+import ufo2 from "./upgradesImg/ufo2.png"
+import ufo3 from "./upgradesImg/ufo3.png"
+
 
 const upgrades = [
   {
@@ -100,6 +116,87 @@ const upgrades = [
   },
   {
     id: uuidv4(),
+    name: "Paper oil?",
+    type: "Van",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: van1,
+  },
+  {
+    id: uuidv4(),
+    name: "Paper oil with poo",
+    type: "Van",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: van2,
+  },
+  {
+    id: uuidv4(),
+    name: "Rich oil",
+    type: "Van",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: van3,
+  },
+  {
+    id: uuidv4(),
+    name: "Paper wagon",
+    type: "ThemePark",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: themepark1,
+  },
+  {
+    id: uuidv4(),
+    name: "Uuugh wagon",
+    type: "ThemePark",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: themepark2,
+  },
+  {
+    id: uuidv4(),
+    name: "VIP wagon",
+    type: "ThemePark",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: themepark3,
+  },
+  {
+    id: uuidv4(),
+    name: "Paper gears",
+    type: "Factory",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: factory1,
+  },
+  {
+    id: uuidv4(),
+    name: "Wet gears",
+    type: "Factory",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: factory2,
+  },
+  {
+    id: uuidv4(),
+    name: "Eurogears",
+    type: "Factory",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: factory3,
+  },
+  {
+    id: uuidv4(),
     name: "A normal rocket",
     type: "Rocket",
     price: 45000,
@@ -124,6 +221,33 @@ const upgrades = [
     pointsPerSeconds: 500,
     purchased: false,
     srcImage: pedrocket,
+  },
+  {
+    id: uuidv4(),
+    name: "Alien mark",
+    type: "UFO",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: ufo1,
+  },
+  {
+    id: uuidv4(),
+    name: "Special Alien mark",
+    type: "UFO",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: ufo2,
+  },
+  {
+    id: uuidv4(),
+    name: "4L13N M4RK",
+    type: "UFO",
+    price: 1000000,
+    pointsPerSeconds: 500,
+    purchased: false,
+    srcImage: ufo3,
   },
 ];
 

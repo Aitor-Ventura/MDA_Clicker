@@ -41,11 +41,20 @@ function buyUpgrade(id: string, type: string, price: number, purchased: boolean,
         case "Shop":
           main.constructions[1].pointsPerSeconds += pointsPerSeconds;
           break;
-        case "Factory":
+        case "Van":
           main.constructions[2].pointsPerSeconds += pointsPerSeconds;
           break;
-        case "Rocket":
+        case "ThemePark":
           main.constructions[3].pointsPerSeconds += pointsPerSeconds;
+          break;
+        case "Factory":
+          main.constructions[4].pointsPerSeconds += pointsPerSeconds;
+          break;
+        case "Rocket":
+          main.constructions[5].pointsPerSeconds += pointsPerSeconds;
+          break;
+        case "UFO":
+          main.constructions[6].pointsPerSeconds += pointsPerSeconds;
           break;
       }
       main.totalPoints -= price;

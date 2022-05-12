@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="sm:background-gris background-crema-peaks"></div>
-    <input v-model="main.name" @change="saveName()" class="transparent mt-12 text-right w-3/12 ml-20 text-xl"><span class="text-xl">'s Bathroom</span>
+    <input v-model="main.name" @change="saveName()" class="transparent mt-12 text-right w-3/12 ml-20 text-xl" /><span class="text-xl">'s Bathroom</span>
     <div class="main select-none">
       <div class="text-display mt-12 mr-11 ml-11 rounded-lg">
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
@@ -20,11 +20,11 @@ import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
-main.assignCookies()
+main.assignCookies();
 main.addPointsPerSecond();
 
 function saveName() {
-  main.storeCookie("name")
+  main.storeCookie("name");
 }
 
 let paperrollStyle = reactive({ width: "max-width: 175px" }); //reactive({ width: "max-width: 175px" });
@@ -154,4 +154,30 @@ export default {};
 
   100%
     transform: scale(0.95)
+
+$background: #fff8f0
+$button: #392f5a
+$text: #fff
+
+.particle
+  display: inline-block
+  position: absolute
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  margin: auto
+  opacity: 1
+  z-index: 9
+  border-radius: 400px
+  &:nth-child(even)
+    background-color: lighten($button, 10%) !important
+
+@for $i from 1 through 400
+  .particle:nth-child (#{$i})
+    $value:#{random(30)}px
+    height: $value
+    width: $value
+    border:#{random(2)}px solid lighten($button, 10%)
+    background-color: transparent
 </style>

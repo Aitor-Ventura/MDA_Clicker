@@ -10,7 +10,6 @@
             <p class="text-center text-2xl">{{ achievement.name }}</p>
             <p class="text-center text italic" v-show="!achievement.achieved">You need to get {{ achievement.name }} </p> <!-- If the achievement is not achieved this description will be shown -->
             <p class="text-center" v-show="achievement.achieved">{{ achievement.description }}</p> <!-- If the achievement is achieved this description will be shown -->
-            
         </div>
 
     </div>

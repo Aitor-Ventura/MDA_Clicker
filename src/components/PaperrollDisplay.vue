@@ -174,10 +174,10 @@ $text: #fff
     background-color: lighten($button, 10%) !important
 
 @for $i from 1 through 400
-  .particle:nth-child (#{$i})
+  .particle:nth-child(#{$i})
     $value:#{random(30)}px
     height: $value
     width: $value
-    border:#{random(2)}px solid lighten($button, 10%)
+    border: #{random(2)}px solid lighten($button, 10%)
     background-color: transparent
 </style>

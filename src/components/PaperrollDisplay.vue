@@ -7,8 +7,12 @@
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
-      <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
+      <div class="flex items-center justify-center">
+        <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
+        <span class="particle" :key="i" v-for="i in particleAmount"></span>
+      </div>
     </div>
+
     <div class="wave-large"></div>
   </div>
 </template>
@@ -20,6 +24,7 @@ import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
+
 main.assignCookies();
 main.addPointsPerSecond();
 
@@ -32,6 +37,11 @@ let paperrollWidth = computed(() => {
   return paperrollStyle.width;
 });
 let animating = false;
+
+const particleAmount = 30;
+const particuleRadius = 50;
+let particleStyle = reactive({ display: "block", animation: "" }); //reactive({ width: "max-width: 175px" });
+
 // sleep(t) -> Espera t milisegundos
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
@@ -48,7 +58,13 @@ const addPointsPerClick = async () => {
     animating = false;
   }
 
+  // Particulas
+
   main.addPointsPerClick();
+};
+
+const getRandomInteger = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 </script>
 
@@ -162,16 +178,18 @@ $text: #fff
 .particle
   display: inline-block
   position: absolute
-  left: 0
+  left: 13%
   right: 0
-  top: 0
-  bottom: 0
-  margin: auto
+  top: 35%
+  bottom: auto
+  margin: 0
   opacity: 1
   z-index: 9
   border-radius: 400px
   &:nth-child(even)
     background-color: lighten($button, 10%) !important
+
+  display: none
 
 @for $i from 1 through 400
   .particle:nth-child(#{$i})

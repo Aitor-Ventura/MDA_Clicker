@@ -1,9 +1,12 @@
 <template>
-  <div ref="wrapper">
+  <div>
     <div class="sm:background-gris background-crema-peaks"></div>
-    <input v-model="main.name" @change="saveName()" class="transparent mt-12 text-right w-3/12 ml-20 text-xl" /><span class="text-xl">'s Bathroom</span>
     <div class="main select-none">
-      <div class="text-display mt-12 mr-11 ml-11 rounded-lg">
+      <label class="name mt-12 mr-11 ml-11 rounded-lg text-lg">
+        <input v-model="main.name" @change="saveName()" class="transparent" />
+        <span class="text-lg">'s Bathroom</span>
+      </label>
+      <div class="text-display mt-6 mr-11 ml-11 rounded-lg">
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
@@ -38,15 +41,12 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 20;
+const particleAmount = 200;
 const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
 
 const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
-onMounted(() => {
-  console.log(particleRefs.value);
-});
 // sleep(t) -> Espera t milisegundos
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
@@ -74,14 +74,13 @@ const addPointsPerClick = async () => {
     // Explosión
     await sleep(50);
     for (let i = 1; i <= particleAmount; i++) {
-      particleRefs.value[i].style.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+      particleRefs.value[i].style.top = 40 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.right = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
     }
 
     await sleep(220);
-
     // Recogida
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "none";
@@ -107,6 +106,18 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
+
+.name
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-content: center
+  justify-items: center
+  background: rgba(207, 207, 207, 0.7)
+
+input
+  max-width: 50%
+  text-align: right
 
 .transparent
   background-color: rgba(0, 0, 0, 0)

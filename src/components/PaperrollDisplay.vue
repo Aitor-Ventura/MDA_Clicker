@@ -38,7 +38,7 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 200;
+const particleAmount = 20;
 const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
 
@@ -68,10 +68,11 @@ const addPointsPerClick = async () => {
     // Inicializacón
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "inline-block";
+      particleRefs.value[i].style.transition = "0.2s linear";
     }
 
     // Explosión
-    await sleep(10);
+    await sleep(50);
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
@@ -204,7 +205,7 @@ export default {};
   100%
     transform: scale(0.95)
 
-$particleColor: grey
+$particleColor: #fff
 
 .particle
   display: inline-block
@@ -219,9 +220,6 @@ $particleColor: grey
   border-radius: 400px
   &:nth-child(even)
     background-color: lighten($particleColor, 10%) !important
-
-  transition: 0.2s linear
-
 
 @for $i from 1 through 400
   .particle:nth-child(#{$i})

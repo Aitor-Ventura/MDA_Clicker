@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="wrapper">
     <div class="sm:background-gris background-crema-peaks"></div>
     <input v-model="main.name" @change="saveName()" class="transparent mt-12 text-right w-3/12 ml-20 text-xl" /><span class="text-xl">'s Bathroom</span>
     <div class="main select-none">
@@ -9,22 +9,21 @@
       </div>
       <div class="flex items-center justify-center">
         <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
-        <span class="particle" :key="i" v-for="i in particleAmount"></span>
+        <span :style="particleStyle" class="particle" :key="i" v-for="i in particleAmount"></span>
       </div>
     </div>
-
     <div class="wave-large"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { reactive, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
 
 const main = useMainStore();
 const { totalPoints, pointsPerSecond } = main;
-
 main.assignCookies();
 main.addPointsPerSecond();
 
@@ -36,11 +35,22 @@ let paperrollStyle = reactive({ width: "max-width: 175px" }); //reactive({ width
 let paperrollWidth = computed(() => {
   return paperrollStyle.width;
 });
+
 let animating = false;
 
-const particleAmount = 30;
-const particuleRadius = 50;
-let particleStyle = reactive({ display: "block", animation: "" }); //reactive({ width: "max-width: 175px" });
+const particleAmount = 3;
+const particleMovementRange = 20; // Del 1 al 100
+let particlesShooting = false;
+let particleStyle: Record<string, string> = reactive({
+  display: "inline-block",
+  top: "35%",
+  left: "13%",
+  bottom: "0",
+  right: "0",
+}); //reactive({ width: "max-width: 175px" });
+let particlePosition = computed((property: string) => {
+  return particleStyle[property];
+});
 
 // sleep(t) -> Espera t milisegundos
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
@@ -48,7 +58,7 @@ const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 const addPointsPerClick = async () => {
   // Si se está ejecutando la animación no la pisamos
   // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
-  if (animating === false) {
+  if (!animating) {
     animating = true;
     // Animación a pelo
     paperrollStyle.width = "max-width: 166px";
@@ -58,7 +68,26 @@ const addPointsPerClick = async () => {
     animating = false;
   }
 
-  // Particulas
+  if (!particlesShooting) {
+    particlesShooting = true;
+    // Particulas
+    particleStyle.display = "inline-block";
+    await sleep(10);
+    particleStyle.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+    particleStyle.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+    particleStyle.right = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+    particleStyle.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+
+    await sleep(700);
+    particleStyle.top = "35%";
+    particleStyle.left = "13%";
+    particleStyle.right = "0";
+    particleStyle.bottom = "0";
+
+    await sleep(220);
+
+    particlesShooting = false;
+  }
 
   main.addPointsPerClick();
 };
@@ -176,20 +205,19 @@ $button: #392f5a
 $text: #fff
 
 .particle
+
   display: inline-block
   position: absolute
-  left: 13%
-  right: 0
-  top: 35%
-  bottom: auto
   margin: 0
   opacity: 1
-  z-index: 9
+  z-index: 200
   border-radius: 400px
   &:nth-child(even)
     background-color: lighten($button, 10%) !important
 
   display: none
+  transition: 0.2s linear
+
 
 @for $i from 1 through 400
   .particle:nth-child(#{$i})

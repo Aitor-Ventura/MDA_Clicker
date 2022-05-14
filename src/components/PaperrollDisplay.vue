@@ -38,7 +38,7 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 40;
+const particleAmount = 200;
 const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
 
@@ -62,10 +62,15 @@ const addPointsPerClick = async () => {
     await sleep(50);
     animating = false;
   }
-  console.log("Antes" + particleRefs.value[1].style.top);
   if (!particlesShooting) {
     particlesShooting = true;
-    // Particulas
+
+    // Inicializacón
+    for (let i = 1; i <= particleAmount; i++) {
+      particleRefs.value[i].style.display = "inline-block";
+    }
+
+    // Explosión
     await sleep(10);
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
@@ -74,19 +79,20 @@ const addPointsPerClick = async () => {
       particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
     }
 
-    await sleep(700);
+    await sleep(220);
 
+    // Recogida
     for (let i = 1; i <= particleAmount; i++) {
+      particleRefs.value[i].style.display = "none";
       particleRefs.value[i].style.top = "35%";
       particleRefs.value[i].style.left = "13%";
       particleRefs.value[i].style.right = 0;
       particleRefs.value[i].style.bottom = 0;
     }
-    console.log("Dentro" + particleRefs.value[1].style.top);
 
+    await sleep(220);
     particlesShooting = false;
   }
-  console.log("Fuera" + particleRefs.value[1].style.top);
   main.addPointsPerClick();
 };
 
@@ -198,9 +204,7 @@ export default {};
   100%
     transform: scale(0.95)
 
-$background: #fff8f0
-$button: #392f5a
-$text: #fff
+$particleColor: grey
 
 .particle
   display: inline-block
@@ -214,7 +218,7 @@ $text: #fff
   z-index: 200
   border-radius: 400px
   &:nth-child(even)
-    background-color: lighten($button, 10%) !important
+    background-color: lighten($particleColor, 10%) !important
 
   transition: 0.2s linear
 
@@ -224,6 +228,6 @@ $text: #fff
     $value:#{random(30)}px
     height: $value
     width: $value
-    border: #{random(2)}px solid lighten($button, 10%)
+    border: #{random(2)}px solid lighten($particleColor, 10%)
     background-color: transparent
 </style>

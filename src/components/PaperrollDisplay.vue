@@ -9,7 +9,7 @@
       </div>
       <div class="flex items-center justify-center">
         <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
-        <span :style="particleStyle" class="particle" :key="i" v-for="i in particleAmount"></span>
+        <span :style="particleStyle" class="particle" :key="i" v-for="i in particleAmount" :ref="(el) => (particleRefs[i] = el)"></span>
       </div>
     </div>
     <div class="wave-large"></div>
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { reactive, computed } from "vue";
 import { useMainStore } from "../stores/mainStore";
 import { abbreviateNumber } from "js-abbreviation-number";
@@ -39,8 +39,14 @@ let paperrollWidth = computed(() => {
 let animating = false;
 
 const particleAmount = 3;
-const particleMovementRange = 20; // Del 1 al 100
+const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
+
+const particleRefs: any = ref([]);
+defineExpose({ particleRefs });
+onMounted(() => {
+  console.log(particleRefs.value);
+});
 let particleStyle: Record<string, string> = reactive({
   display: "inline-block",
   top: "35%",
@@ -73,16 +79,12 @@ const addPointsPerClick = async () => {
     // Particulas
     particleStyle.display = "inline-block";
     await sleep(10);
-    particleStyle.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
-    particleStyle.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
-    particleStyle.right = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
-    particleStyle.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
-
-    await sleep(700);
-    particleStyle.top = "35%";
-    particleStyle.left = "13%";
-    particleStyle.right = "0";
-    particleStyle.bottom = "0";
+    for (let i = 1; i < particleAmount; i++) {
+      particleRefs.value[i].style.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+      particleRefs.value[i].style.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+      particleRefs.value[i].style.right = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+      particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
+    }
 
     await sleep(220);
 

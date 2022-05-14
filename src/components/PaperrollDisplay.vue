@@ -9,7 +9,7 @@
       </div>
       <div class="flex items-center justify-center">
         <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
-        <span :style="particleStyle" class="particle" :key="i" v-for="i in particleAmount" :ref="(el) => (particleRefs[i] = el)"></span>
+        <span class="particle" :key="i" v-for="i in particleAmount" :ref="(el) => (particleRefs[i] = el)"></span>
       </div>
     </div>
     <div class="wave-large"></div>
@@ -38,26 +38,15 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 3;
+const particleAmount = 40;
 const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
 
-const particleRefs: any = ref([]);
+const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
 onMounted(() => {
   console.log(particleRefs.value);
 });
-let particleStyle: Record<string, string> = reactive({
-  display: "inline-block",
-  top: "35%",
-  left: "13%",
-  bottom: "0",
-  right: "0",
-}); //reactive({ width: "max-width: 175px" });
-let particlePosition = computed((property: string) => {
-  return particleStyle[property];
-});
-
 // sleep(t) -> Espera t milisegundos
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
@@ -73,24 +62,31 @@ const addPointsPerClick = async () => {
     await sleep(50);
     animating = false;
   }
-
+  console.log("Antes" + particleRefs.value[1].style.top);
   if (!particlesShooting) {
     particlesShooting = true;
     // Particulas
-    particleStyle.display = "inline-block";
     await sleep(10);
-    for (let i = 1; i < particleAmount; i++) {
+    for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.top = 35 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.left = 13 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.right = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
       particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
     }
 
-    await sleep(220);
+    await sleep(700);
+
+    for (let i = 1; i <= particleAmount; i++) {
+      particleRefs.value[i].style.top = "35%";
+      particleRefs.value[i].style.left = "13%";
+      particleRefs.value[i].style.right = 0;
+      particleRefs.value[i].style.bottom = 0;
+    }
+    console.log("Dentro" + particleRefs.value[1].style.top);
 
     particlesShooting = false;
   }
-
+  console.log("Fuera" + particleRefs.value[1].style.top);
   main.addPointsPerClick();
 };
 
@@ -207,8 +203,11 @@ $button: #392f5a
 $text: #fff
 
 .particle
-
   display: inline-block
+  top: 35%
+  left: 13%
+  bottom: 0
+  right: 0
   position: absolute
   margin: 0
   opacity: 1
@@ -217,7 +216,6 @@ $text: #fff
   &:nth-child(even)
     background-color: lighten($button, 10%) !important
 
-  display: none
   transition: 0.2s linear
 
 

@@ -41,7 +41,7 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 200;
+const particleAmount = 30;
 const particleMovementRange = 40; // Del 1 al 100
 let particlesShooting = false;
 
@@ -68,7 +68,7 @@ const addPointsPerClick = async () => {
     // Inicializacón
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "inline-block";
-      particleRefs.value[i].style.transition = "0.2s linear";
+      particleRefs.value[i].style.transition = "0.4s linear";
     }
 
     // Explosión
@@ -80,7 +80,7 @@ const addPointsPerClick = async () => {
       particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
     }
 
-    await sleep(220);
+    await sleep(420);
     // Recogida
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "none";
@@ -90,7 +90,7 @@ const addPointsPerClick = async () => {
       particleRefs.value[i].style.bottom = 0;
     }
 
-    await sleep(220);
+    await sleep(420);
     particlesShooting = false;
   }
   main.addPointsPerClick();

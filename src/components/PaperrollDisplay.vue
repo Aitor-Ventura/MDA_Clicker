@@ -46,7 +46,7 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-let particleAmount = 30;
+let particleAmount = 50;
 let particleMovementRange = 30; // Del 1 al 100
 let particlesShooting = false;
 let particleAnimationTime = 0.45;
@@ -63,7 +63,13 @@ const addPointsPerClick = async () => {
   // Si se está ejecutando la animación no la pisamos
   // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
 
-  if (comboMeter.value < 100) comboMeter.value++;
+  if (comboMeter.value < 100) {
+    comboMeter.value++;
+    particleAmount = 50 * (comboMeter.value / 100);
+    particleMovementRange = 60 * (comboMeter.value / 100);
+    particleAnimationTime = 0.8 - 0.6 * (comboMeter.value / 100);
+  }
+
   comboMeter.multiplier = 1 + (comboMeter.value * 150) / 10000;
   if (!animating) {
     animating = true;

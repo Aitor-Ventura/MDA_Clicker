@@ -114,6 +114,7 @@ const addPointsPerClick = async () => {
 
   console.log("Particle refs 1: " + particleRefs.value["1"]);
   console.log("Particle refs length: " + particleRefs.value.length);
+  /*
   if (!particlesShooting) {
     particlesShooting = true;
 
@@ -144,7 +145,7 @@ const addPointsPerClick = async () => {
 
     await sleep(particleAnimationTime * 1000 + 20);
     particlesShooting = false;
-  }
+  } */
 
   main.addPointsPerClick(comboMeter.multiplier);
 };

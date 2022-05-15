@@ -113,6 +113,7 @@ const addPointsPerClick = async () => {
   }
 
   console.log("Particle refs 1: " + particleRefs.value[1]);
+  console.log("Particle refs length: " + particleRefs.value.length);
   if (!particlesShooting) {
     particlesShooting = true;
 

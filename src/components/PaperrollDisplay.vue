@@ -45,7 +45,7 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-let particleAmount = 50;
+let particleAmount = 60;
 let particleMovementRange = 30; // Del 1 al 100
 let particlesShooting = false;
 let particleAnimationTime = 0.45;
@@ -104,7 +104,7 @@ const addPointsPerClick = async () => {
   if (!comboTimerCounting) toggleComboTimer();
 
   if (comboMeter.value < 100) {
-    comboMeter.value++;
+    if (comboMeter.value < 100) comboMeter.value++;
     particleAmount = 50 * (comboMeter.value / 100);
     particleMovementRange = 60 * (comboMeter.value / 100);
     particleAnimationTime = 0.9 - 0.6 * (comboMeter.value / 100);

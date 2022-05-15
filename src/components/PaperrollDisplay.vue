@@ -67,7 +67,7 @@ const addPointsPerClick = async () => {
     comboMeter.value++;
     particleAmount = 50 * (comboMeter.value / 100);
     particleMovementRange = 60 * (comboMeter.value / 100);
-    particleAnimationTime = 0.8 - 0.6 * (comboMeter.value / 100);
+    particleAnimationTime = 0.9 - 0.6 * (comboMeter.value / 100);
   }
 
   comboMeter.multiplier = 1 + (comboMeter.value * 150) / 10000;

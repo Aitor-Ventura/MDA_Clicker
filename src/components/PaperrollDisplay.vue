@@ -15,7 +15,7 @@
         <span class="particle" :key="i" v-for="i in particleAmount" :ref="(el) => (particleRefs[i] = el)"></span>
       </div>
       <div class="text-display mt-24 mr-11 ml-11 rounded-lg">
-        <div class="arriba text-center text-3xl">{{ comboMeter.value }}</div>
+        <div class="arriba text-center text-3xl">{{ comboMeter.value.toFixed(0) }}</div>
         <div class="arriba text-center text-lg">multiplier: ×{{ comboMeter.multiplier.toFixed(2) }}</div>
       </div>
     </div>
@@ -51,24 +51,35 @@ let particlesShooting = false;
 let particleAnimationTime = 0.45;
 let particleAnimationMovement = "ease"; // Linear | ease-in | ease-out | bezier
 
-let comboMeter: any = reactive({ value: "0", multiplier: 1.0 });
+let comboMeter: any = reactive({ value: 0, multiplier: 1.0 });
 
 let comboTimerCounting = false;
-let interval: any = null;
-let comboTimer = 0;
+let secondCounter: any = null;
 let time = 0;
-/*
+let comboReducer = 0;
+
 function toggleComboTimer() {
   if (comboTimerCounting) {
-    clearInterval(interval);
+    clearInterval(secondCounter);
   } else {
-    interval = setInterval(incrementTime(), 1000);
+    secondCounter = setInterval(() => {
+      time = time + 1;
+      if (time === 6) comboReducer = 1;
+      if (time > 6) {
+        comboReducer *= 1 + time / 100;
+      }
+      if (comboMeter.value < comboReducer) {
+        clearInterval(secondCounter);
+        comboMeter.value = 0;
+        comboMeter.multiplier = 1;
+      } else {
+        comboMeter.value -= comboReducer;
+        comboMeter.multiplier = 1 + (comboMeter.value * 150) / 10000;
+      }
+    }, 1000);
   }
   comboTimerCounting = !comboTimerCounting;
 }
-function incrementTime() {
-  time = parseInt(time) + 1;
-}*/
 
 const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
@@ -76,8 +87,10 @@ defineExpose({ particleRefs });
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
 const addPointsPerClick = async () => {
-  // Si se está ejecutando la animación no la pisamos
-  // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
+  time = 0;
+  comboReducer = 0;
+  // Encendemos timer combo
+  if (!comboTimerCounting) toggleComboTimer();
 
   if (comboMeter.value < 100) {
     comboMeter.value++;
@@ -99,13 +112,13 @@ const addPointsPerClick = async () => {
   if (!particlesShooting) {
     particlesShooting = true;
 
-    // Inicializacón
+    // Inicializacón particulas
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "inline-block";
       particleRefs.value[i].style.transition = particleAnimationTime + "s " + particleAnimationMovement;
     }
 
-    // Explosión
+    // Explosión particulas
     await sleep(50);
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.top = 40 - getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
@@ -115,7 +128,7 @@ const addPointsPerClick = async () => {
     }
 
     await sleep(particleAnimationTime * 1000 + 20);
-    // Recogida
+    // Recogida particulas
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "none";
       particleRefs.value[i].style.top = "35%";

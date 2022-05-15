@@ -7,7 +7,7 @@ import achievements from "@/assets/achievements";
 export const useMainStore = defineStore("main", {
   state: () => ({
     totalPoints: 0,
-    name: "Pepe",
+    name: "Pepe el crema",
     pointsPerSecond: 1,
     pointsPerClick: 1,
     interval: setInterval(() => {}, 1000),
@@ -25,8 +25,8 @@ export const useMainStore = defineStore("main", {
   },
   actions: {
     // Should be triggered by a "Click" event
-    addPointsPerClick() {
-      this.totalPoints += this.pointsPerClick;
+    addPointsPerClick(multiplier: number) {
+      this.totalPoints += this.pointsPerClick * multiplier;
     },
     addPointsPerSecond() {
       clearInterval(this.interval);

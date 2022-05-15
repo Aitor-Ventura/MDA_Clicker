@@ -10,11 +10,16 @@
         <div class="arriba text-center text-3xl">{{ abbreviateNumber(+main.totalPoints.toFixed(0)) }} papers</div>
         <div class="arriba text-center text-lg">per second: {{ abbreviateNumber(main.pointsPerSecond, 2) }}</div>
       </div>
-      <div class="flex items-center justify-center">
+      <div class="paperrollContainer mt-8 flex items-center justify-center">
         <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
         <span class="particle" :key="i" v-for="i in particleAmount" :ref="(el) => (particleRefs[i] = el)"></span>
       </div>
+      <div class="text-display mt-24 mr-11 ml-11 rounded-lg">
+        <div class="arriba text-center text-3xl">{{ comboMeter.value }}</div>
+        <div class="arriba text-center text-lg">multiplier: ×{{ comboMeter.multiplier.toFixed(2) }}</div>
+      </div>
     </div>
+
     <div class="wave-large"></div>
   </div>
 </template>
@@ -41,9 +46,13 @@ let paperrollWidth = computed(() => {
 
 let animating = false;
 
-const particleAmount = 30;
-const particleMovementRange = 40; // Del 1 al 100
+let particleAmount = 30;
+let particleMovementRange = 30; // Del 1 al 100
 let particlesShooting = false;
+let particleAnimationTime = 0.45;
+let particleAnimationMovement = "ease"; // Linear | ease-in | ease-out | bezier
+
+let comboMeter: any = reactive({ value: "0", multiplier: 1.0 });
 
 const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
@@ -53,6 +62,9 @@ const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 const addPointsPerClick = async () => {
   // Si se está ejecutando la animación no la pisamos
   // Deberia de ser un deadlock? Si. Va a ser un deadlock? No jaja
+
+  if (comboMeter.value < 100) comboMeter.value++;
+  comboMeter.multiplier = 1 + (comboMeter.value * 150) / 10000;
   if (!animating) {
     animating = true;
     // Animación a pelo
@@ -68,7 +80,7 @@ const addPointsPerClick = async () => {
     // Inicializacón
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "inline-block";
-      particleRefs.value[i].style.transition = "0.4s linear";
+      particleRefs.value[i].style.transition = particleAnimationTime + "s " + particleAnimationMovement;
     }
 
     // Explosión
@@ -80,7 +92,7 @@ const addPointsPerClick = async () => {
       particleRefs.value[i].style.bottom = getRandomInteger(-particleMovementRange, particleMovementRange) + "%";
     }
 
-    await sleep(420);
+    await sleep(particleAnimationTime * 1000 + 20);
     // Recogida
     for (let i = 1; i <= particleAmount; i++) {
       particleRefs.value[i].style.display = "none";
@@ -90,10 +102,11 @@ const addPointsPerClick = async () => {
       particleRefs.value[i].style.bottom = 0;
     }
 
-    await sleep(420);
+    await sleep(particleAnimationTime * 1000 + 20);
     particlesShooting = false;
   }
-  main.addPointsPerClick();
+
+  main.addPointsPerClick(comboMeter.multiplier);
 };
 
 const getRandomInteger = (min: number, max: number) => {
@@ -106,6 +119,9 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
+
+.paperrollContainer
+  min-height: 40vh
 
 .name
   display: flex
@@ -184,7 +200,7 @@ input
 .paperroll
   padding-top: 5em
   z-index: 1000
-  align-self: center
+  align-self: flex-start
   cursor: pointer
   animation: float 6s ease-in-out infinite
   transition: max-width 0.05s
@@ -219,7 +235,7 @@ input
 $particleColor: #fff
 
 .particle
-  display: inline-block
+  display: none
   top: 35%
   left: 13%
   bottom: 0

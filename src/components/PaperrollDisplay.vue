@@ -12,7 +12,7 @@
       </div>
       <div class="paperrollContainer mt-8 flex items-center justify-center">
         <img :style="paperrollWidth" draggable="false" id="tunnel" class="paperroll arriba" @click="addPointsPerClick()" :src="main.getSkin()" />
-        <span class="particle" :ref="(el) => (particleRefs[1] = el)"></span>
+        <span class="particle" :key="i" v-for="i in particleList" :ref="(el) => (particleRefs[i] = el)"></span>
       </div>
       <div class="text-display mt-24 mr-11 ml-11 rounded-lg">
         <div class="arriba text-center text-3xl">{{ comboMeter.value.toFixed(0) }}</div>
@@ -57,6 +57,16 @@ let comboTimerCounting = false;
 let secondCounter: any = null;
 let time = 0;
 let comboReducer = 0;
+
+let particleList = reactive(
+  computed(() => {
+    const arr = [];
+    for (let i = 0; i < particleAmount; i++) {
+      arr.push(i);
+    }
+    return arr;
+  })
+);
 
 function toggleComboTimer() {
   if (comboTimerCounting) {

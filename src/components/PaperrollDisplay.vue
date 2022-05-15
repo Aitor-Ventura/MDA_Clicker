@@ -81,14 +81,14 @@ function toggleComboTimer() {
   comboTimerCounting = !comboTimerCounting;
 }
 
-const particleRefs: any = reactive(ref([1]));
+const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
 
 // sleep(t) -> Espera t milisegundos
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
 const addPointsPerClick = async () => {
-  console.log("Particle refs: " + particleRefs.value);
+  console.log(particleRefs.value);
   time = 0;
   comboReducer = 0;
   // Encendemos timer combo

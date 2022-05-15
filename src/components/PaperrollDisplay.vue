@@ -19,7 +19,6 @@
         <div class="arriba text-center text-lg">multiplier: ×{{ comboMeter.multiplier.toFixed(2) }}</div>
       </div>
     </div>
-
     <div class="wave-large"></div>
   </div>
 </template>

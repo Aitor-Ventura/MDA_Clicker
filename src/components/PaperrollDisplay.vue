@@ -54,6 +54,23 @@ let particleAnimationMovement = "ease"; // Linear | ease-in | ease-out | bezier
 
 let comboMeter: any = reactive({ value: "0", multiplier: 1.0 });
 
+let comboTimerCounting = false;
+let interval: any = null;
+let comboTimer = 0;
+let time = 0;
+/*
+function toggleComboTimer() {
+  if (comboTimerCounting) {
+    clearInterval(interval);
+  } else {
+    interval = setInterval(incrementTime(), 1000);
+  }
+  comboTimerCounting = !comboTimerCounting;
+}
+function incrementTime() {
+  time = parseInt(time) + 1;
+}*/
+
 const particleRefs: any = reactive(ref([]));
 defineExpose({ particleRefs });
 // sleep(t) -> Espera t milisegundos

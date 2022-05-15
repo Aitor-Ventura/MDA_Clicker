@@ -88,6 +88,7 @@ defineExpose({ particleRefs });
 const sleep = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
 const addPointsPerClick = async () => {
+  console.log("Particle refs: " + particleRefs.value);
   time = 0;
   comboReducer = 0;
   // Encendemos timer combo
@@ -111,6 +112,7 @@ const addPointsPerClick = async () => {
     animating = false;
   }
 
+  console.log("Particle refs 1: " + particleRefs.value[1]);
   if (!particlesShooting) {
     particlesShooting = true;
 
